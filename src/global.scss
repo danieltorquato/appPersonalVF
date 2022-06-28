@@ -24,3 +24,20 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root{
+  --ion-font-family: 'Charis SIL', serif;
+  --ion-background-color: rgb(44, 44, 44);
+  --ion-toolbar-background: #000075be;
+  --ion-toolbar-color:rgb(0, 0, 0);
+  --ion-tab-bar-background: #000035d8;
+  --ion-tab-bar-color:#FFF;
+  --ion-tab-bar-color-selected:#FFF;
+
+  //font-style: italic;
+  font-weight: bold;
+
+}
+
+
+
