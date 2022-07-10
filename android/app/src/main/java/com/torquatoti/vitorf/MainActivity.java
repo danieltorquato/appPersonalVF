@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.torquatoti.vitorf;
 
 import com.getcapacitor.BridgeActivity;
 
