@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
@@ -11,11 +12,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class FormPage implements OnInit {
 
   signUp: FormGroup;
+  uid: string;
 
   constructor(
     public formbuilder: FormBuilder,
     public db: AngularFireDatabase,
-    public auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    public navCtrl: NavController
     ) {
 
    }
@@ -31,15 +34,20 @@ export class FormPage implements OnInit {
   register(){
     const auth = getAuth();
 createUserWithEmailAndPassword(auth, this.signUp.value.email, this.signUp.value.password)
-  .then((userCredential) => {
 
-    const user = userCredential.user;
-    console.log('usuário criado');
+
+.then((credentialsUser) => {
+  const uid=credentialsUser.user.uid;
+  this.db.database.ref('/users').child(uid).push(this.signUp.value);
+    console.log(this.signUp.value);
+
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ..
+    console.log(errorCode);
+    console.log(errorMessage);
+
   });
   }
 

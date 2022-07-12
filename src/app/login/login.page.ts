@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Storage } from '@ionic/storage-angular';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -27,13 +27,18 @@ export class LoginPage implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]]
     });
-
-
+    this.storage.create();
+    this.storage.get('users')
+    .then((response)=>{
+      if(response.user!=null){
+        this.navCtrl.navigateRoot('/tabs/tab2');
+      }
+    });
 
  {
 
 }
-this.storage.create();
+
   }
   login(){
     const auth = getAuth();
