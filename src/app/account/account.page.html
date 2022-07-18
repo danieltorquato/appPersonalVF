@@ -32,9 +32,11 @@
 </ion-row>
     </div>
 </div>
-<ion-list class="name ion-text-center" > <ion-item > <ion-label *ngFor="let item of list">{{ item.name }}
+<ion-list class="name ion-text-center" *ngFor="let item of list">
 
-</ion-label> </ion-item>
+
+  {{ item.name }}
+
 </ion-list>
 <div class="ion-text-center"> <ion-text class="code">70172</ion-text></div>
    <div class="infos">
@@ -54,6 +56,6 @@
     Senha
 
   </ion-text>
-  <ion-textarea></ion-textarea>
+  <ion-input type="password"></ion-input>
   </div>
 </ion-content>
