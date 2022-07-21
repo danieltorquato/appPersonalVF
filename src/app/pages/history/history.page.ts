@@ -22,17 +22,21 @@ ano= String(this.data.getFullYear());
    ) { }
 
   ngOnInit() {
+    this.storage.create();
     this.storage.get('users')
     .then((response)=>{
 
      const uid=response;
      console.log(response);
-          const listDB = this.db.database.ref('/history').child(uid).child(this.mes);
-          listDB.on('value', (snapshot)=>{
+     const listDB = this.db.database.ref('/history').child(uid).child(this.mes);
+     listDB.on('value', (snapshot)=>{
             const items = snapshot.val();
             console.log(items);
             if(items){
-              this.list= Object.keys(items).map(i=>items[i]);
+              this.list= Object.keys(items).map(i=> {
+                console.log(i);
+                return items[i];
+              });
               console.log(this.list);
             }
           });

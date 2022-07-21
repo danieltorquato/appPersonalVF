@@ -7,11 +7,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Musculação</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-col class="buttonLogout">
+    <ion-button class="trainingInit" expand="block" color="tertiary" (click)="addTrainingRegister()">Iniciar Treino</ion-button>
+  </ion-col>
 </ion-content>

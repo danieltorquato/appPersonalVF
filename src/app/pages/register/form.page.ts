@@ -5,11 +5,11 @@ import {AngularFireDatabase} from '@angular/fire/compat/database';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.page.html',
-  styleUrls: ['./form.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class FormPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   signUp: FormGroup;
   uid: string;
@@ -28,6 +28,7 @@ export class FormPage implements OnInit {
       name: [null, [Validators.required, Validators.minLength(5)]],
       email: [, [Validators.required, Validators.minLength(5)]],
       password: [null, [Validators.required, Validators.minLength(6)]],
+      img: [null]
     });
 
   };

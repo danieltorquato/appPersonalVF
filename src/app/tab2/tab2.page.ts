@@ -26,9 +26,12 @@ export class Tab2Page implements OnInit {
     public formbuilder: FormBuilder,
     ) {}
     ngOnInit(){
-      this.dateAtual= this.formbuilder.group({
+      this.dateAtual=this.formbuilder.group({
         date: [this.dataAtual]});
-  }
+        if(this.dateAtual.value){
+          console.log(this.dateAtual.value);
+        }
+      }
 
 
 logout(){
@@ -44,22 +47,5 @@ logout(){
     console.log(errorMessage);
   });
 
-}
-addTrainingRegister(){
-
-    this.storage.get('users')
-    .then((response)=>{
-     const uid=response;
-     console.log(this.list);
-
-  this.db.database.ref(`/history/${uid}`).child(this.mes).push(this.dateAtual.value);
-    console.log(this.dateAtual);
-
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-  });
 }
 }

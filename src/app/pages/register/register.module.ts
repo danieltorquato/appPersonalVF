@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FormPageRoutingModule } from './form-routing.module';
+import { RegisterPageRoutingModule } from './register-routing.module';
 
-import { FormPage } from './form.page';
+import {  RegisterPage } from './register.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { FormPage } from './form.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    FormPageRoutingModule
+    RegisterPageRoutingModule
   ],
-  declarations: [FormPage]
+  declarations: [RegisterPage]
 })
-export class FormPageModule {}
+export class RegisterPageModule {}

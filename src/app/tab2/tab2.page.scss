@@ -1,14 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .icons>ion-col {
   display: flex;
   justify-content: center;
-  top: 9rem;
+  top: 10rem;
+  margin-bottom: 20px;
 }
 .textIcons>ion-col {
   display: flex;
   justify-content: center;
-  top: 8.5rem;
+  top: 8.8rem;
   font-size: 14px;
   color: #FFF;
+  margin-bottom: 50px;
 }
 
 .icons>ion-col>.iconMenu {
@@ -64,7 +70,7 @@ border-bottom: 1px solid rgba(153, 153, 252, 0.541);
   // height: 980px;
   max-height: 400px;
 }
-.textDayTraining {
+.dayTraining {
 
   /* Treino do dia */
 
@@ -112,302 +118,19 @@ ion-fab-list {
   width: 16px;
   height: 16px
 }
-.contentOne{
+.buttonLogout{
   position: relative;
-  top: 30%;
+  top: 25%;
 
 display: flex;
 flex-direction: column;
 align-items: center;
 
 }
-.contentOne>*{
+.buttonLogout>*{
 
 width: 80%;
 height: 50px;
 margin-bottom: 20px;
 --border-radius:60px;
 }
-// /* GRÁFICO DE PROGRESSO */
-
-
-// position: absolute;
-// width: 313px;
-// height: 41px;
-// left: 25px;
-// top: 718px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 25px;
-// line-height: 30px;
-
-// color: #FFFFFF;
-
-
-
-
-
-
-// /* clock 1 */
-
-
-// position: absolute;
-// width: 92px;
-// height: 92px;
-// left: 140px;
-// top: 308px;
-
-
-
-// /* clipboard 1 */
-
-
-// position: absolute;
-// width: 92px;
-// height: 92px;
-// left: 254px;
-// top: 308px;
-
-
-
-// /* activity 1 */
-
-
-// position: absolute;
-// width: 92px;
-// height: 92px;
-// left: 25px;
-// top: 456px;
-
-
-
-// /* activity 2 */
-
-
-// box-sizing: border-box;
-
-// position: absolute;
-// width: 311px;
-// height: 304px;
-// left: 25px;
-// top: 772px;
-
-// border: 1px solid #FFFFFF;
-
-
-// /* calendar 1 */
-
-
-// position: absolute;
-// width: 92px;
-// height: 92px;
-// left: 140px;
-// top: 456px;
-
-
-
-// /* log-out 1 */
-
-
-// position: absolute;
-// width: 92px;
-// height: 92px;
-// left: 255px;
-// top: 456px;
-
-
-
-// /* PERFIL */
-
-
-
-
-
-// /* HISTÓRICO */
-
-
-// position: absolute;
-// width: 98px;
-// height: 22px;
-// left: 131px;
-// top: 413px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 22px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* AGENDA */
-
-
-// position: absolute;
-// width: 74px;
-// height: 22px;
-// left: 259px;
-// top: 413px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 22px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* PROGRESSO */
-
-
-// position: absolute;
-// width: 109px;
-// height: 22px;
-// left: 16px;
-// top: 567px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 22px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* HORÁRIOS */
-
-
-// position: absolute;
-// width: 93px;
-// height: 22px;
-// left: 146px;
-// top: 567px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 22px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* SAIR */
-
-
-// position: absolute;
-// width: 40px;
-// height: 22px;
-// left: 280px;
-// top: 567px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 18px;
-// line-height: 22px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* Rectangle 3 */
-
-
-// box-sizing: border-box;
-
-// position: absolute;
-// width: 330px;
-// height: 52px;
-// left: 16px;
-// top: 620px;
-
-// background: #022859;
-// border: 1px solid #000000;
-// border-radius: 10px;
-
-
-// /* INICIAR TREINO */
-
-
-// position: absolute;
-// width: 128px;
-// height: 21px;
-// left: 116px;
-// top: 635px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 17px;
-// line-height: 21px;
-// /* identical to box height */
-
-
-// color: #FFFFFF;
-
-
-
-// /* Rectangle 6 */
-
-
-// position: absolute;
-// width: 35px;
-// height: 149px;
-// left: 325px;
-// top: 88px;
-
-// background: #D9D9D9;
-// border-radius: 10px 0px 0px 10px;
-
-
-// /* remada 2 */
-
-
-// position: absolute;
-// width: 145px;
-// height: 149px;
-// left: 14px;
-// top: 89px;
-
-// background: url(remada.jpg);
-// border-radius: 10px;
-
-
-// /* NxN REPS. */
-
-
-// position: absolute;
-// width: 72px;
-// height: 46px;
-// left: 81px;
-// top: 177px;
-
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 24px;
-// line-height: 29px;
-
-// color: #000000;
-
-// border: 3px solid #FFFFFF;

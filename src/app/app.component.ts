@@ -16,15 +16,15 @@ export class AppComponent implements OnInit{
     public db: AngularFireDatabase,
     public auth: AngularFireAuth,) {}
 ngOnInit() {
-  this.storage.create();
-    this.storage.get('users')
-    .then((response)=>{
-      if(response.user==null){
-        this.navCtrl.navigateRoot('login');
+  // this.storage.create();
+  //   this.storage.get('users')
+  //   .then((response)=>{
+  //     if(response.user==null){
+  //       this.navCtrl.navigateRoot('login');
 
 
-      }
-    });
+  //     }
+  //   });
 }
 
 }

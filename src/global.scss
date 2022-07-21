@@ -28,14 +28,14 @@
 :root{
   --ion-font-family: 'Charis SIL', serif;
   --ion-background-color: rgb(44, 44, 44);
-  --ion-toolbar-background: #000075be;
+  // --ion-toolbar-background: #000075be;
   --ion-toolbar-color:rgb(0, 0, 0);
-  --ion-tab-bar-background: #000035d8;
+  --ion-tab-bar-background:transparent;
   --ion-tab-bar-color:#FFF;
+  --ion-tab-bar-border-color:rgb(0, 0, 0);
   --ion-tab-bar-color-selected:#FFF;
-
-  //font-style: italic;
-  font-weight: bold;
+  // --ion-tab-bar-font: 2px;
+  // font-style: italic;
 
 }
 
