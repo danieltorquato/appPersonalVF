@@ -30,6 +30,14 @@ const routes: Routes = [
     path: 'hours',
     loadChildren: () => import('./pages/hours/hours.module').then( m => m.HoursPageModule)
   },
+  {
+    path: 'swimming-training',
+    loadChildren: () => import('./pages/swimming-training/swimming-training.module').then( m => m.SwimmingTrainingPageModule)
+  },
+  {
+    path: 'musc-training',
+    loadChildren: () => import('./pages/musc-training/musc-training.module').then( m => m.MuscTrainingPageModule)
+  },
 
 ];
 @NgModule({
