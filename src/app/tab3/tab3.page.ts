@@ -32,7 +32,7 @@ export class Tab3Page implements OnInit {
         date: [this.dataAtual]});
   }
   addTrainingRegister(){
-
+    this.storage.create();
     this.storage.get('users')
     .then((response)=>{
      const uid=response;

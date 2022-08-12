@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'musc-training',
     loadChildren: () => import('./pages/musc-training/musc-training.module').then( m => m.MuscTrainingPageModule)
   },
+  {
+    path: 'completed-training',
+    loadChildren: () => import('./pages/completed-training/completed-training.module').then( m => m.CompletedTrainingPageModule)
+  },
 
 ];
 @NgModule({

@@ -1,8 +1,13 @@
 <div>
   <p >{{this.time}}:{{this.timeM}}</p>
   <ion-button color="medium" class="timerInit" (click)="chronometerInit()">Iniciar</ion-button>
-  <ion-button color="medium" (click)="chronometerPause()">Pausar</ion-button>
-  <ion-button color="medium" (click)="chronometerResume()">Resumo</ion-button>
-  <ion-button color="medium" (click)="chronometerClear()">Zerar</ion-button>
-  <ion-button color="medium" (click)="newTurn()">Nova Volta</ion-button>
+  <ion-button color="medium" class="timerResume hideClass" (click)="chronometerResume()">Resumo</ion-button>
+  <ion-button color="medium" class="timerPause hideClass" (click)="chronometerPause()">Pausar</ion-button>
+  <ion-button color="medium" class="timerClear hideClass" (click)="chronometerClear()">Zerar</ion-button>
+  <ion-button color="medium" class="timerNewTurn hideClass" (click)="newTurn()">Nova Volta</ion-button>
+  <h1></h1>
+  <p class="test"></p>
+  <ion-button color="medium" class="clearTimes hideClass" (click)="finishCicle()">Fechar Ciclos</ion-button>
+  <ion-button color="medium" class="clearTimes hideClass" (click)="clearTimes()">Limpar Tempos</ion-button>
+
 </div>

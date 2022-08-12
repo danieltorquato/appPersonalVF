@@ -9,9 +9,9 @@
 
 <ion-content>
 
-
-<input type="file" (click)="openGallery()">
-<input type="button" (click)="uploadImageUser()">
-
+  <div class="botaoArquivo">{{   this.divHTML  }}</div>
+<input type="file" (click)="openGallery()" id="fileName">
+<input type="button" (click)="uploadImageUser()" value="Enviar">
+<input type="button" value="Alo" (click)="uploadImage()">
 
 </ion-content>

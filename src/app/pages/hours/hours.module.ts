@@ -1,3 +1,4 @@
+import { CalendarComponent } from './../../components/calendar/calendar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { HoursPage } from './hours.page';
     IonicModule,
     HoursPageRoutingModule
   ],
-  declarations: [HoursPage]
+  declarations: [HoursPage, CalendarComponent]
 })
 export class HoursPageModule {}

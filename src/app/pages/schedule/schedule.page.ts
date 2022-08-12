@@ -17,7 +17,7 @@ export class SchedulePage implements OnInit {
   urlImage: string;
   urlImages: any;
   id: string;
-
+  divHTML: string;
   constructor( private camera: Camera,
     public storage: Storage,
     public db: AngularFireDatabase,
@@ -25,6 +25,20 @@ export class SchedulePage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // eslint-disable-next-line prefer-const
+    let div = document.getElementsByClassName('botaoArquivo')[0];
+// eslint-disable-next-line prefer-const
+let input = document.getElementById('fileName') as HTMLInputElement | null;
+
+div.addEventListener('click', ()=>{
+    input.click();
+});
+input.addEventListener('change', ()=>{
+    let nome = 'Não há arquivo selecionado. Selecionar arquivo...';
+    if(input.files.length > 0) {nome = input.files[0].name;}
+    this.divHTML = nome;
+});
 }
 openGallery(){
   const options: CameraOptions = {
@@ -38,6 +52,7 @@ openGallery(){
    // imageData is either a base64 encoded string or a file URI
    // If it's base64 (DATA_URL):
    const base64Image = 'data:image/jpeg;base64,' + imageData;
+
   }, (err) => {
    // Handle error
    console.log(err);
@@ -49,14 +64,14 @@ uploadImage() {
 
   };
 uploadImageUser(){
+  this.storage.create();
   const storage = getStorage();
-  const imageName = 'AirBrush_20220523193143.jpg';
-  // const listRef = ref(storage, 'images/');
+  const imageName =  this.divHTML;
   const gsReference = ref(storage, `gs://vitorf-2a488.appspot.com/images/${imageName}`);
 
 getDownloadURL(gsReference).then((response)=>{
   this.urlImage = response;
-
+console.log(this.urlImage);
     this.storage.get('users').then((resp)=>{
     const uid = resp;
     const listDB= this.db.database.ref('/users').child(uid);

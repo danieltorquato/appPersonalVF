@@ -1,3 +1,4 @@
+import { ExercisesComponent } from './../../components/exercises/exercises.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +14,8 @@ import { MuscTrainingPage } from './musc-training.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MuscTrainingPageRoutingModule
+    MuscTrainingPageRoutingModule,
   ],
-  declarations: [MuscTrainingPage]
+  declarations: [MuscTrainingPage, ExercisesComponent]
 })
 export class MuscTrainingPageModule {}
