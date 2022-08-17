@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { FormBuilder } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
@@ -20,7 +21,8 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
-    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule],
+    // eslint-disable-next-line max-len
+    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule],
   providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder],
   bootstrap: [AppComponent],
 })

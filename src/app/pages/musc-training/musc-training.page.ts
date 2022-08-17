@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-musc-training',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./musc-training.page.scss'],
 })
 export class MuscTrainingPage implements OnInit {
-
+@Input() list: any;
   constructor() { }
 
   ngOnInit() {

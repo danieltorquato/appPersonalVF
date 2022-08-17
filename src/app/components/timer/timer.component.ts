@@ -77,7 +77,7 @@ this.time=0;
 this.timeM=0;
 }
 newTurn(){
-  $('.test').html(`<p>${this.time}:${this.timeM}</p>`);
+  $('.test').append(`<p>${this.time}:${this.timeM}</p>`);
   $('.clearTimes').removeClass('hideClass');
   this.chronometerClear();
   this.chronometerInit();
@@ -104,9 +104,10 @@ async finishCicle(){
         role: 'confirm',
         handler: () => {
           this.handlerMessage = 'Alert confirmed';
-          this.chronometerClear();
+          // this.chronometerClear();
           $('.clearTimes').addClass('hideClass');
           $('.test').addClass('hideClass');
+          this.clearTimes();
        this.router.navigate(['/completed-training']);
         },
       },

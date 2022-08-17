@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">VitorF</string>
     <string name="title_activity_main">VitorF</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="package_name">br.com.torquatoti</string>
+    <string name="custom_url_scheme">br.com.torquatoti</string>
 </resources>

@@ -1,3 +1,4 @@
+import { SharedModule } from './../../../../shared/shared.module';
 import { ExercisesComponent } from './../../components/exercises/exercises.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { MuscTrainingPage } from './musc-training.page';
     FormsModule,
     IonicModule,
     MuscTrainingPageRoutingModule,
+    SharedModule
   ],
-  declarations: [MuscTrainingPage, ExercisesComponent]
+  declarations: [MuscTrainingPage ]
 })
 export class MuscTrainingPageModule {}

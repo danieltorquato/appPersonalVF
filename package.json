@@ -23,15 +23,16 @@
     "@awesome-cordova-plugins/camera": "^5.44.0",
     "@awesome-cordova-plugins/file": "^5.44.0",
     "@awesome-cordova-plugins/image-picker": "^5.44.0",
-    "@capacitor/android": "3.6.0",
+    "@capacitor/android": "^3.6.0",
     "@capacitor/app": "1.1.1",
-    "@capacitor/core": "3.6.0",
+    "@capacitor/core": "^3.6.0",
     "@capacitor/haptics": "1.1.4",
     "@capacitor/ios": "3.6.0",
     "@capacitor/keyboard": "1.2.3",
     "@capacitor/status-bar": "1.0.8",
     "@ionic-native/sqlite-porter": "^5.36.0",
     "@ionic/angular": "^6.1.9",
+    "@ionic/cordova-builders": "^7.0.0",
     "@ionic/storage": "^3.0.6",
     "@ionic/storage-angular": "^3.0.6",
     "@types/jquery": "^3.5.14",
@@ -42,6 +43,7 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
+    "y": "0.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -54,16 +56,22 @@
     "@angular/compiler": "^14.0.0",
     "@angular/compiler-cli": "^14.0.0",
     "@angular/language-service": "^14.0.0",
-    "@capacitor/cli": "3.6.0",
-    "@ionic/angular-toolkit": "^6.0.0",
+    "@capacitor/cli": "^3.6.0",
+    "@ionic/angular-toolkit": "^7.0.0",
     "@ionic/lab": "3.2.13",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
+    "cordova-android": "^9.0.0",
     "cordova-plugin-camera": "^6.0.0",
+    "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "^7.0.0",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
+    "cordova-plugin-ionic-webview": "^5.0.0",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-telerik-imagepicker": "github:Telerik-Verified-Plugins/ImagePicker",
     "cordova-res": "0.15.4",
     "eslint": "^7.6.0",
@@ -72,6 +80,7 @@
     "eslint-plugin-prefer-arrow": "1.2.2",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
+    "jetifier": "^2.0.0",
     "karma": "~6.3.2",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
@@ -86,11 +95,24 @@
   "cordova": {
     "plugins": {
       "cordova-sqlite-storage": {},
-      "cordova-plugin-camera": {},
-      "cordova-plugin-file": {},
+      "cordova-plugin-camera": {
+        "ANDROIDX_CORE_VERSION": "1.6.+"
+      },
+      "cordova-plugin-file": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      },
       "cordova-plugin-telerik-imagepicker": {
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
-      }
-    }
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message",
+        "ANDROID_SUPPORT_V7_VERSION": "27.+"
+      },
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "android"
+    ]
   }
 }

@@ -1,3 +1,4 @@
+import { SharedModule } from './../../../../shared/shared.module';
 import { TimerComponent } from './../../components/timer/timer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,8 +16,9 @@ import { SwimmingTrainingPage } from './swimming-training.page';
     FormsModule,
     IonicModule,
     SwimmingTrainingPageRoutingModule,
-
+    CommonModule,
+    SharedModule
   ],
-  declarations: [SwimmingTrainingPage,TimerComponent]
+  declarations: [SwimmingTrainingPage]
 })
 export class SwimmingTrainingPageModule {}

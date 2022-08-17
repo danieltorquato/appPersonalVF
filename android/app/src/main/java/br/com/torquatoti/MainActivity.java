@@ -1,4 +1,4 @@
-package com.torquatoti.vitorf;
+package br.com.torquatoti;
 
 import com.getcapacitor.BridgeActivity;
 
