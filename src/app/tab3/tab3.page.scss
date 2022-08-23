@@ -1,0 +1,36 @@
+.card2{
+  width: 90%;
+  height: 240px;
+  position: fixed;
+  top: 50%;
+  background-color: #f1f2f3;
+  color: #003655;
+  box-shadow: 1px 1px 2px 1px #212122;
+  background-color: #080853;
+}
+
+img{
+  opacity: 70%;
+  max-width: 500px;
+  max-height: 400px;
+}
+.imgTrainingBox {
+  box-sizing: border-box;
+  position: absolute;
+  width: 380px;
+  height: 250px;
+  left: 3%;
+  top: 80px;
+  background: transparent;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #FFF;
+  box-shadow: 0.5px 0.5px 0.5px 2px #003655;
+  text-align: center;
+
+}
+.trainingInit
+{
+  position: relative;
+  top: 80%;
+}

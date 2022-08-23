@@ -15,8 +15,12 @@ list;
     public auth: AngularFireAuth) { }
 
   ngOnInit() {
+    this.storage.create();
     this.storage.get('users').then((response)=>{
 this.uid=response;
+if(this.uid == null){
+$('.code').html('Você não está logado');
+}
     const listDB = this.db.database.ref('/users').child(this.uid);
     listDB.on('value', (snapshot)=>{
       const items = snapshot.val();

@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'initial',
+    loadChildren: () => import('./pages/initial/initial.module').then( m => m.InitialPageModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
@@ -42,6 +46,27 @@ const routes: Routes = [
     path: 'completed-training',
     loadChildren: () => import('./pages/completed-training/completed-training.module').then( m => m.CompletedTrainingPageModule)
   },
+  {
+    path: 'swimming-informations',
+    loadChildren: () => import('./pages/swimming-informations/swimming-informations.module').then( m => m.SwimmingInformationsPageModule)
+  },
+  {
+    path: 'musc-informations',
+    loadChildren: () => import('./pages/musc-informations/musc-informations.module').then( m => m.MuscInformationsPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/professor/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'pupils',
+    loadChildren: () => import('./pages/professor/pupils/pupils.module').then( m => m.PupilsPageModule)
+  },
+  {
+    path: 'feedbacks',
+    loadChildren: () => import('./pages/professor/feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
+  },
+
 
 ];
 @NgModule({

@@ -5,8 +5,8 @@ ion-toolbar{
   .imgTrainingBox {
     box-sizing: border-box;
     position: absolute;
-    width: 92%;
-    height: 40%;
+    width: 380px;
+    height: 250px;
     left: 3%;
     top: 20px;
     background: transparent;
@@ -14,6 +14,7 @@ ion-toolbar{
     border-width: 1px;
     border-color: #FFF;
     box-shadow: 0.5px 0.5px 0.5px 2px #003655;
+    text-align: center;
 
   }
   .imgTraining{
@@ -23,20 +24,19 @@ ion-toolbar{
   }
 .card{
   width: 90%;
-  height: 140px;
+  height: 240px;
   position: fixed;
-  top: 50%;
+  top: 40%;
   background-color: #f1f2f3;
   color: #003655;
   box-shadow: 1px 1px 2px 1px #212122;
-}
-.card2{
-  width: 90%;
-  height: 140px;
-  position: fixed;
-  top: 70%;
-  background-color: #f1f2f3;
-  color: #003655;
-  box-shadow: 1px 1px 2px 1px #212122;
+  background-color: #080853;
 }
 
+img{
+  max-width: 300;
+  max-height: 400px;
+}
+h1{
+  background-color: transparent;
+}

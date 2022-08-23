@@ -1,3 +1,4 @@
+import { HomePainelStudentComponent } from './components/home-painel-student/home-painel-student.component';
 import { SharedModule } from './../../shared/shared.module';
 import { FormBuilder } from '@angular/forms';
 

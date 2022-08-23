@@ -1,3 +1,4 @@
+import { HomePainelStudentComponent } from './../src/app/components/home-painel-student/home-painel-student.component';
 import { ExercisesComponent } from './../src/app/components/exercises/exercises.component';
 import { IonicModule } from '@ionic/angular';
 import { TimerComponent } from './../src/app/components/timer/timer.component';
@@ -10,7 +11,7 @@ import { SharedComponent } from './shared.component';
     CommonModule,
     IonicModule
   ],
-  exports:[TimerComponent, ExercisesComponent],
-  declarations: [SharedComponent, TimerComponent, ExercisesComponent]
+  exports:[TimerComponent, ExercisesComponent, HomePainelStudentComponent],
+  declarations: [SharedComponent, TimerComponent, ExercisesComponent, HomePainelStudentComponent]
 })
 export class SharedModule { }

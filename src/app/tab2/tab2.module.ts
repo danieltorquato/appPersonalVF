@@ -1,3 +1,4 @@
+import { SharedModule } from './../../../shared/shared.module';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,7 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
     ReactiveFormsModule,
-
+    SharedModule
   ],
   declarations: [Tab2Page]
 })

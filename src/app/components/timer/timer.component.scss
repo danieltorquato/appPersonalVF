@@ -1,7 +1,16 @@
-p{
+.timerText{
   color: aqua;
+font-family: 'Times New Roman', Times, serif;
+  font-size: 180px;
+  text-align: center;
+  height: 20px;
+  margin-top: 0%;
 }
 .hideClass
 {
 display: none;
+}
+ion-button{
+width: 97%;
+height: 50px;
 }

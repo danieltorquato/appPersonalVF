@@ -1,0 +1,72 @@
+.icons{
+height: 80px;
+width: 70px;
+margin-top: 40px;
+margin-left: 13%;
+border-radius: 10px;
+}
+.firstPainel{
+background-color: aliceblue;
+height: 400px;
+position: relative;
+top: -50px;
+justify-content: center;
+}
+.secondPainel{
+background-color: blue;
+height: 240%;
+border-radius: 100px 100px 0px 0px;
+position: relative;
+top: -200px;
+}
+.cardPerfil
+{
+  border-radius: 120px 0px 180px 0px;
+  height: 400px;
+  width: 101%;
+  position: relative;
+  right: 5%;
+  top: 6.5%;
+  display: flex;
+justify-content: center;
+justify-items: center;
+}
+.iconImg{
+position: absolute;
+width: 120px;
+height: 120px;
+border-radius: 200px;
+top: 9%;
+left: 35%;
+}
+.iconAlert{
+position: absolute !important;
+bottom: 60% !important;
+right: 5% !important;
+text-align: center;
+}
+// .iconAlert2{
+// position: absolute !important;
+// bottom: 60.5% !important;
+// right: 78% !important;
+// }
+
+h2{
+  position: absolute;
+  top: 30%;
+  }
+h6{
+position: absolute;
+top: 38%;
+}
+.imgAlert{
+position: absolute;
+left: 32%;
+bottom: 18%;
+}
+.iconText{
+position: absolute;
+bottom: 50%;
+left: 11%;
+font-size: large;
+}

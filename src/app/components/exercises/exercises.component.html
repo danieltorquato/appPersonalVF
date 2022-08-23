@@ -1,6 +1,10 @@
 <ion-list *ngFor="let items of list">
-  {{ items.name }}
-  <p>{{this.items.img}}</p>
+ <h3>Nome: </h3> {{ items.exercicio.id.name }}
+ <h3>Observações: </h3>  {{ items.exercicio.id.observations }}
+ <h3>Repetições: </h3>  {{ items.exercicio.id.repetitions }}
+ <h3>Series: </h3>  {{ items.exercicio.id.series }}
+ <h3>Peso: </h3> {{ items.exercicio.id.weight }}
+
 </ion-list>
 
 
