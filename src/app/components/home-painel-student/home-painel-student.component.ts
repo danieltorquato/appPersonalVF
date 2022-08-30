@@ -1,3 +1,6 @@
+import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { getAuth } from 'firebase/auth';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePainelStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storage: Storage,
+    private navCtrl: NavController
+    ) {}
 
   ngOnInit() {}
-
+  logout(){
+    const auth=getAuth();
+    this.storage.create();
+    auth.signOut().then((response)=>{
+      console.log(response);
+      this.navCtrl.navigateRoot('login');
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+  }
 }

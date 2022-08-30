@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adicionar Treino</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="botaoArquivo">{{   this.divHTML  }}</div>
+<input type="file" (click)="openGallery()" id="fileName">
+<input type="button" (click)="uploadImageUser()" value="Enviar">
+<input type="button" value="Alo" id="upload" (click)="uploadImage()">
+
+</ion-content>

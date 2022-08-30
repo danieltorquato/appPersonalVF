@@ -66,6 +66,14 @@ const routes: Routes = [
     path: 'feedbacks',
     loadChildren: () => import('./pages/professor/feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
   },
+  {
+    path: 'add-exercises',
+    loadChildren: () => import('./pages/professor/add-exercises/add-exercises.module').then( m => m.AddExercisesPageModule)
+  },
+  {
+    path: 'student-training-v',
+    loadChildren: () => import('./pages/professor/student-training-v/student-training-v.module').then( m => m.StudentTrainingVPageModule)
+  },
 
 
 ];

@@ -15,7 +15,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { firebaseConfig } from './../environments/environment';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/compat/storage';
 import { Camera} from '@awesome-cordova-plugins/camera/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 
@@ -24,7 +24,8 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   imports: [BrowserModule, IonicStorageModule.forRoot(),
     // eslint-disable-next-line max-len
     IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule],
-  providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder],
+  // eslint-disable-next-line max-len
+  providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
