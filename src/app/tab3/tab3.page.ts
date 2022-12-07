@@ -6,6 +6,7 @@ import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { AlertController } from '@ionic/angular';
+import { doc, updateDoc, getFirestore } from 'firebase/firestore';
 Chart.register(...registerables);
 @Component({
   selector: 'app-tab3',
@@ -23,9 +24,10 @@ export class Tab3Page implements OnInit {
   list;
   id;
   listagem: void[];
+  db = getFirestore();
   constructor(public storage: Storage,
     public navCtrl: NavController,
-    public db: AngularFireDatabase,
+    // public db: AngularFireDatabase,
     public auth: AngularFireAuth,
     public formbuilder: FormBuilder,
     private alertController: AlertController) {}
@@ -70,21 +72,31 @@ export class Tab3Page implements OnInit {
         });
 
   }
-  addTrainingRegister(){
-    this.storage.create();
-    this.storage.get('users')
-    .then((response)=>{
-     const uid=response;
+//   addTrainingRegister(){
+//     this.storage.create();
+//     this.storage.get('users')
+//     .then((response)=>{
+//      const uid=response;
 
-this.db.database.ref(`/history/${uid}/`).child(this.mes).push(this.dateForm.value);
-this.presentAlert();
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-  });
+// this.db.database.ref(`/history/${uid}/`).child(this.mes).push(this.dateForm.value);
+// this.presentAlert();
+//   }).catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     console.log(errorCode);
+//     console.log(errorMessage);
+//   });
+// }
+async registerTraining(){
+  const historico = doc(this.db, '/users/PKlUMPunNBMM0cuP7pOa/historico/musculacao', 'data');
+
+// Set the "capital" field of the city 'DC'
+await updateDoc(historico, {
+data: '20/05/2022'
+});
+
 }
+
 async presentAlert() {
   const alert = await this.alertController.create({
     header: 'Parabéns',

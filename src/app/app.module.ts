@@ -1,8 +1,7 @@
 import { HomePainelStudentComponent } from './components/home-painel-student/home-painel-student.component';
 import { SharedModule } from './../../shared/shared.module';
-import { FormBuilder } from '@angular/forms';
-
-import { NgModule } from '@angular/core';
+import { FormBuilder, FormsModule } from '@angular/forms';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -23,9 +22,10 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
     // eslint-disable-next-line max-len
-    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule],
+    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule],
   // eslint-disable-next-line max-len
   providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

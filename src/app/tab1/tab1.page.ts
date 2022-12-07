@@ -11,7 +11,7 @@ export class Tab1Page implements OnInit {
   constructor() {}
   ngOnInit(){
 
-const teste = 98;
+const view = 98;
 
   const ctx = document.getElementById('chart') as HTMLCanvasElement;
   const myChart = new Chart(ctx, {
@@ -20,7 +20,7 @@ const teste = 98;
           labels: ['1', '2-3', 'Yellow', 'Green', 'Purple'],
           datasets: [{
               label: '# of Votes',
-              data: [teste, 95, 93, 94, 90],
+              data: [view, 95, 93, 94, 90],
               backgroundColor: [
                   'rgba(1, 233, 0, 0.8)',
                   'rgba(225, 255, 0, 0.8)',

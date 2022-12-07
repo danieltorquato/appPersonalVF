@@ -15,10 +15,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'form',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
     path: 'account',
     loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
   },
@@ -73,6 +69,10 @@ const routes: Routes = [
   {
     path: 'student-training-v',
     loadChildren: () => import('./pages/professor/student-training-v/student-training-v.module').then( m => m.StudentTrainingVPageModule)
+  },
+  {
+    path: 'registers',
+    loadChildren: () => import('./pages/registers/registers.module').then( m => m.RegistersPageModule)
   },
 
 

@@ -1,0 +1,20 @@
+<div class="firstPainel">
+
+  <ion-list *ngFor="let item of list">
+    <ion-card class="cardPerfil">
+    </ion-card>
+    <img class="iconImg" src="{{item.img}}" alt="">
+  </ion-list>
+</div>
+<div class="secondPainel">
+  <ion-list *ngFor="let item of list" class="editData">
+  <input type="text" value="{{item.name}}" placeholder="Nome">
+<input type="text" value="{{item.shortName}}" placeholder="Apelido">
+<input type="email" id="email" value="{{item.email}}" placeholder="E-mail">
+<input type="password" id="passwordEdit" placeholder="Atualize sua senha">
+<input type="password" placeholder="Confirme sua senha">
+  </ion-list>
+  <ion-button color="success">Salvar alterações</ion-button> <br>
+  <ion-button color="danger">Voltar ao menu</ion-button>
+
+</div>

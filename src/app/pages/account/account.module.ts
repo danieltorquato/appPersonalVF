@@ -1,3 +1,4 @@
+import { AccountEditComponent } from './../../components/account-edit/account-edit.component';
 import { LoginPageModule } from './../login/login.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,6 @@ import { AccountPage } from './account.page';
     LoginPageModule,
 
   ],
-  declarations: [AccountPage]
+  declarations: [AccountPage, AccountEditComponent]
 })
 export class AccountPageModule {}
