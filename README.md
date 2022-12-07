@@ -23,7 +23,7 @@ Idealizado pelo Personal Vitor Ferreira, fui designado a desenvolver um app para
 
 <img src="src/assets/img/gifcronometro.gif">
 </p>
-<h2 align="center"> Cronômetro e histórico de tempo </h2>
+<h2 align="center"> Gerenciamento de Alunos </h2>
 
 <p align="center">Você Personal pode controlar e montar o treino dos alunos, à partir de sua lista de alunos, controle, veja quem são seus alunos, para melhor gerenciá-los.</p>
 <p align="center">
