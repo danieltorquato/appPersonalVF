@@ -14,28 +14,28 @@ import { doc, getDoc } from 'firebase/firestore';
 })
 export class HomePainelStudentComponent implements OnInit {
   list: any;
-  db = getFirestore();
+
   id: string;
   constructor(
     private storage: Storage,
     private navCtrl: NavController,
-    // private db: AngularFireDatabase
+    private db: AngularFireDatabase
   ) {}
   async ngOnInit() {
-    // this.storage.create();
-    // this.storage.get('users').then((response) => {
-    //   const uid = response;
-    //   const listDB = this.db.database.ref('/users').child(uid);
-    //   listDB.on('value', (snapshot) => {
-    //     const items = snapshot.val();
-    //     if (items) {
-    //       this.list = Object.keys(items).map((i) => {
-    //         return items[i];
-    //       });
-    //       console.log(this.list);
-    //     }
-    //   });
-    // });
+    this.storage.create();
+    this.storage.get('users').then((response) => {
+      const uid = response;
+      const listDB = this.db.database.ref('/users').child(uid);
+      listDB.on('value', (snapshot) => {
+        const items = snapshot.val();
+        if (items) {
+          this.list = Object.keys(items).map((i) => {
+            return items[i];
+          });
+          console.log(this.list);
+        }
+      });
+    });
 
   }
   logout() {

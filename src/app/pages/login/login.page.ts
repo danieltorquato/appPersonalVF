@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
@@ -5,6 +7,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Storage } from '@ionic/storage-angular';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc, getFirestore, getDoc } from 'firebase/firestore';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,8 +15,11 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
+  db = getFirestore();
+  user: string;
+
   constructor(
-    public db: AngularFireDatabase,
+    // public db: AngularFireDatabase,
     public auth: AngularFireAuth,
     public navCtrl: NavController,
     public formbuilder: FormBuilder,
@@ -22,17 +28,10 @@ export class LoginPage implements OnInit {
 
 }
 
-  ngOnInit() {
+   ngOnInit() {
     this.loginForm = this.formbuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]]
-    });
-    this.storage.create();
-    this.storage.get('users')
-    .then((response)=>{
-      if(response.user!=null){
-        this.navCtrl.navigateRoot('/tabs/tab2');
-      }
     });
 
  {
@@ -40,17 +39,12 @@ export class LoginPage implements OnInit {
 }
 
   }
-  login(){
+ login(){
     const auth = getAuth();
     signInWithEmailAndPassword(auth, this.loginForm.value.email, this.loginForm.value.password)
-      .then((response) => {
-
-
-        this.storage.set('users', response.user.uid)
-        .then(()=>{
-          this.navCtrl.navigateRoot('/tabs/tab2');
-          console.log(response.user);
-        });
+      .then(async (response) => {
+      this.user = response.user.uid;
+      console.log(this.user);
       })
       .catch((error) => {
         const errorCode = error.code;

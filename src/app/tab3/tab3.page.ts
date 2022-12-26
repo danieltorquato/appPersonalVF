@@ -1,7 +1,6 @@
 import { Chart, registerables} from 'chart.js';
 import { FormBuilder } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -16,7 +15,8 @@ Chart.register(...registerables);
 export class Tab3Page implements OnInit {
   data = new Date();
   dia= String(this.data.getDate());
-  mes= String(this.data.toLocaleString('pt-BR', { month: 'long' }));
+  mesN= String(this.data.toLocaleString('pt-BR', { month: 'long' }));
+  mes = this.mesN[0].toUpperCase() + this.mesN.substr(1);
   ano= String(this.data.getFullYear());
   dataAtual= `${this.dia}/${this.mes}/${this.ano}`;
   dateForm;
@@ -27,11 +27,11 @@ export class Tab3Page implements OnInit {
   db = getFirestore();
   constructor(public storage: Storage,
     public navCtrl: NavController,
-    // public db: AngularFireDatabase,
     public auth: AngularFireAuth,
     public formbuilder: FormBuilder,
     private alertController: AlertController) {}
     ngOnInit(){
+      console.log(this.db);
       this.dateForm= this.formbuilder.group({
         date: [this.dataAtual]});
 
@@ -72,29 +72,17 @@ export class Tab3Page implements OnInit {
         });
 
   }
-//   addTrainingRegister(){
-//     this.storage.create();
-//     this.storage.get('users')
-//     .then((response)=>{
-//      const uid=response;
 
-// this.db.database.ref(`/history/${uid}/`).child(this.mes).push(this.dateForm.value);
-// this.presentAlert();
-//   }).catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     console.log(errorCode);
-//     console.log(errorMessage);
-//   });
-// }
 async registerTraining(){
-  const historico = doc(this.db, '/users/PKlUMPunNBMM0cuP7pOa/historico/musculacao', 'data');
 
+  const refs = 'users/' ;
+  console.log(refs);
+  const historico = doc(this.db, refs + '/historico' + '/musculacao' + '/2022/' + this.mes);
 // Set the "capital" field of the city 'DC'
 await updateDoc(historico, {
-data: '20/05/2022'
+data: this.dataAtual
 });
-
+this.presentAlert();
 }
 
 async presentAlert() {
