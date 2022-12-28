@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   signUp: any;
   db = getFirestore();
 user: LoginPage;
+  uid: string;
   constructor(
     private formbuilder: FormBuilder,
     private auth: AngularFireAuth,
@@ -32,21 +33,21 @@ user: LoginPage;
   };
 register(){
   return this.auth.createUserWithEmailAndPassword(this.signUp.value.email, this.signUp.value.password).then(async (response) => {
-    const uid = response.user.uid;
-    console.log(uid);
-    await setDoc(doc(this.db, 'users/' + uid + '/dados' + '/usuario'), {
+    this.uid = response.user.uid;
+    console.log(this.uid);
+    await setDoc(doc(this.db, 'users/' + this.uid), {
       name: this.signUp.value.name,
       email: this.signUp.value.email,
-      password: this.signUp.value.password,
       img: '',
       shortName: '',
-      isAdmin:false
+      isAdmin:false,
+      isProfessor:false
 
   });
 
     });
     }catch(){
-      console.log(this.user.user);
+
     }
 
 }

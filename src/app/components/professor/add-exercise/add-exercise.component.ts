@@ -112,7 +112,7 @@ export class AddExerciseComponent implements OnInit {
             const storage = getStorage();
             const gsReference = ref(
               storage,
-              `gs://vitorf-2a488.appspot.com/images/${this.input.files[0].name}`
+              `gs://vitor-f-app.appspot.com/images/${this.input.files[0].name}`
             );
             getDownloadURL(gsReference).then((response) => {
               this.urlImage = response;

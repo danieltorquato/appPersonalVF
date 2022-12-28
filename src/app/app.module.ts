@@ -22,10 +22,10 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
     // eslint-disable-next-line max-len
-    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule],
+    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule],
   // eslint-disable-next-line max-len
   providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
