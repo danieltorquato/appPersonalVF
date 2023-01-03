@@ -1,8 +1,9 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import * as $ from 'jquery';
 import { File } from '@ionic-native/file/ngx';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import {
   deleteObject,
   getDownloadURL,
@@ -27,11 +28,11 @@ import { RegisterComponent } from '../register/register.component';
   styleUrls: ['./account-edit.component.scss'],
 })
 export class AccountEditComponent implements OnInit {
-  data= new Date();
-  dia= String(this.data.getDate());
-  mes= String(this.data.toLocaleString('pt-BR', { month: 'long' }));
-  ano= String(this.data.getFullYear());
-    dataAtual= `${this.dia}-${this.mes}-${this.ano}`;
+  data = new Date();
+  dia = String(this.data.getDate());
+  mes = String(this.data.toLocaleString('pt-BR', { month: 'long' }));
+  ano = String(this.data.getFullYear());
+  dataAtual = `${this.dia}-${this.mes}-${this.ano}`;
   listRef: any;
   urlImage: string;
   urlImages: any;
@@ -41,41 +42,54 @@ export class AccountEditComponent implements OnInit {
   handlerMessage = '';
   roleMessage = '';
   ref: any;
-uid;
-list;
-items;
-auth = getAuth();
-db = getFirestore();
+  uid;
+  list;
+  items;
+  auth = getAuth();
+  db = getFirestore();
   docRef: any;
   dataUser: any;
   listArray;
   result;
+  userData;
+  base64Image: string;
+  nameInput;
   constructor(
     public storage: Storage,
     private camera: Camera,
     public formbuilder: FormBuilder,
     public af: AngularFireStorage,
     public file: File,
-    private alertController: AlertController,
-    private actionSheetCtrl: ActionSheetController) { }
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
-
+    //Captura usuário atual
     onAuthStateChanged(this.auth, (user) => {
       this.uid = user.uid;
       this.listRef = doc(this.db, 'users/' + this.uid);
       this.docRef = onSnapshot(doc(this.db, '/users/', this.uid), (doc) => {
-
         this.items = doc.data();
         this.listArray = [doc.data()];
         console.log(this.items);
-
+        this.userData = this.formbuilder.group({
+          name: [this.items.name],
+          shortName: [this.items.shortName],
+          email: [null, [Validators.required, Validators.minLength(5)]],
+          img: [null],
+          isAdmin: [null],
+          isProfessor: [null]
+        });
       });
     });
 
-    const div = document.getElementsByClassName('botaoArquivo')[0];
+
+    //importa botões de arquivo
+
+    const div = document.getElementsByClassName('teste')[0];
     this.input = document.getElementById('fileName') as HTMLInputElement | null;
 
+    //Faz o tratamento do arquivo para ser enviado
     div.addEventListener('click', () => {
       this.input.click();
     });
@@ -85,13 +99,14 @@ db = getFirestore();
         nome = this.input.files[0].name;
       }
       this.divHTML = nome;
-    });
-if(this.uid == null){
-$('.code').html('Você não está logado');
-}
+      this.uploadImage();
+      this.uploadImageUser();
 
+    });
   }
- public openGallery() {
+
+  //Configuração para abrir e capturar dados da imagem
+  public openGallery() {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -100,17 +115,22 @@ $('.code').html('Você não está logado');
     };
     this.camera.getPicture(options).then(
       (imageData) => {
-        const base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.base64Image = 'data:image/jpeg;base64,' + imageData;
       },
       (err) => {
         console.log(err);
       }
     );
   }
+
+  //Faz o upload da imagem para o banco
   uploadImage() {
     this.storage.create();
     const storage = getStorage();
-    this.ref = ref(storage, `images/${this.items.name}/${this.dataAtual}-${this.input.files[0].name}`);
+    this.ref = ref(
+      storage,
+      `images/${this.items.uid}/${this.dataAtual}-${this.input.files[0].name}`
+    );
     uploadBytesResumable(this.ref, this.input.files[0])
       .then((snapshot) => {
         console.log(snapshot);
@@ -120,42 +140,53 @@ $('.code').html('Você não está logado');
         console.log(error);
       });
   }
+
+  //Atualiza a imagem do usuário
   async uploadImageUser() {
+    //Chama a função de Upload e sobe a imagem para o banco
     this.uploadImage();
+    //Abre um alert para confirmar se quer mesmo alterar sua imagem
     const alert = await this.alertController.create({
       header: 'Adicionar imagem',
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel',
+
           handler: () => {
-            this.handlerMessage = 'Alert canceled';
+            /*Caso o usuário clique em Cancelar, a imagem é deletada do banco (economizar espaço não utilizado) na chamada da função deleteImage;*/
             this.deleteImage();
           },
         },
         {
-          text: 'OK',
+          text: 'Alterar',
           role: 'confirm',
           handler: () => {
-
+            /*Se clicar em Alterar buscamos o path da imagem no banco*/
             const storage = getStorage();
             const gsReference = ref(
               storage,
               `gs://vitor-f-app.appspot.com/images/${this.items.name}/${this.dataAtual}-${this.input.files[0].name}`
             );
-             getDownloadURL(gsReference).then(async (response) => {
-              this.urlImage = response;
-             console.log(this.urlImage);
-
-            });
-            this.handlerMessage = 'Alert confirmed';
-
+            getDownloadURL(gsReference)
+              .then(async (response) => {
+                //capturamos URL da Imagem
+                this.urlImage = response;
+                console.log(this.urlImage);
+                $('.iconImg').attr('src',   this.urlImage);
+              })
+              .then((response) => {
+                console.log(response);
+                this.handlerMessage = 'Alert confirmed';
+              });
           },
         },
       ],
     });
     await alert.present();
   }
+
+//Deleta imagem do banco
   deleteImage() {
     deleteObject(this.ref)
       .then(() => {
@@ -165,12 +196,25 @@ $('.code').html('Você não está logado');
         console.log(err);
       });
   }
-  async uploadUserImg(){
+//Altera imagem do usuário
+  async uploadUserData() {
+    if (this.urlImage === undefined) {
+      await updateDoc(this.listRef, {
+        // eslint-disable-next-line quote-props
+        name: this.userData.value.name,
+        shortName: this.userData.value.shortName,
 
-    await updateDoc(this.listRef, {
-      // eslint-disable-next-line quote-props
-      img: this.urlImage,
+      });
+    }else{
+      await updateDoc(this.listRef, {
+        // eslint-disable-next-line quote-props
+        img: this.urlImage,
+        name: this.userData.value.name,
+        shortName: this.userData.value.shortName,
 
-  });
+
+      });
+    }
+    console.log('Atualizado');
   }
 }

@@ -1,29 +1,33 @@
 <ion-grid>
-<ion-col>
+  <ion-col>
     <div class="firstPainel">
       <ion-list *ngFor="let user of listArray">
-        <ion-card class="cardPerfil">
-        </ion-card>
-          <img class="iconImg" src="{{user.img}}" alt="">
-      </ion-list>
+      <ion-card class="cardPerfil">
+    <img class="iconImg" src="{{user.img}}" alt="">
+  </ion-card>
+</ion-list>
+<div class="teste">Alterar</div>
+
+
     </div>
     <div class="secondPainel">
-      <ion-list *ngFor="let user of listArray" class="editData">
-      <input type="text" value="{{user.name}}" placeholder="Nome">
-    <input type="text" value="{{user.shortName}}" placeholder="Apelido">
-    <input type="email" id="email" value="{{user.email}}" placeholder="E-mail" readonly>
-    <input type="password" id="passwordEdit" placeholder="Atualize sua senha">
-    <input type="password" placeholder="Confirme sua senha">
-      </ion-list>
-      <ion-button color="success">Salvar alterações</ion-button> <br>
-      <ion-button color="danger">Voltar ao menu</ion-button>
+      <form [formGroup]="userData" *ngIf="userData" (ngSubmit)="uploadUserData()">
+        <ion-list *ngFor="let user of listArray" class="editData">
+          <input type="text" id="nameInput" value="{{user.name}}" placeholder="Nome" formControlName="name">
+          <input type="text" value="{{user.shortName}}" placeholder="Apelido" formControlName="shortName">
+          <input type="email" id="email" value="{{user.email}}" placeholder="E-mail" readonly>
+          <input type="password" id="passwordEdit" placeholder="Atualize sua senha">
+          <input type="password" placeholder="Confirme sua senha">
+        </ion-list>
+        <ion-button color="success" type="submit">Salvar alterações</ion-button> <br>
+        <ion-button color="danger">Voltar ao menu</ion-button>
+      </form>
 
     </div>
 
-</ion-col>
-<div class="botaoArquivo">{{   this.divHTML  }}</div>
-  <input type="file" (click)="openGallery()" id="fileName">
-  <input type="button" (click)="uploadImageUser()" value="Enviar">
-  <input type="button" value="Alo" id="upload" (click)="uploadImage()">
+  </ion-col>
 
+  <div class="botaoArquivo">{{ this.divHTML }}</div>
+  <input type="file" (click)="openGallery()" id="fileName">
+  <input type="button" value="Enviar" (click)="uploadUserData()">
 </ion-grid>
