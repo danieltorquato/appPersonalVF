@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
+import { HistoryComponent } from 'src/app/components/history/history.component';
+import { AccountEditComponent } from 'src/app/components/account-edit/account-edit.component';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +18,10 @@ import { HistoryPage } from './history.page';
     IonicModule,
     HistoryPageRoutingModule,
   ],
-  declarations: [HistoryPage]
+  providers:[
+    AccountEditComponent,
+    File
+  ],
+  declarations: [HistoryPage, HistoryComponent]
 })
 export class HistoryPageModule {}

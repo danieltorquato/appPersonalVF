@@ -64,25 +64,7 @@ export class AccountEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //Captura usuário atual
-    onAuthStateChanged(this.auth, (user) => {
-      this.uid = user.uid;
-      this.listRef = doc(this.db, 'users/' + this.uid);
-      this.docRef = onSnapshot(doc(this.db, '/users/', this.uid), (doc) => {
-        this.items = doc.data();
-        this.listArray = [doc.data()];
-        console.log(this.items);
-        this.userData = this.formbuilder.group({
-          name: [this.items.name],
-          shortName: [this.items.shortName],
-          email: [null, [Validators.required, Validators.minLength(5)]],
-          img: [null],
-          isAdmin: [null],
-          isProfessor: [null]
-        });
-      });
-    });
-
+    this.userCatch();
 
     //importa botões de arquivo
 
@@ -104,7 +86,28 @@ export class AccountEditComponent implements OnInit {
 
     });
   }
+  public userCatch(){
+    //Captura usuário atual
+   onAuthStateChanged(this.auth, (user) => {
+      this.uid = user.uid;
+      this.listRef = doc(this.db, 'users/' + this.uid);
+      this.docRef = onSnapshot(doc(this.db, '/users/', this.uid), (doc) => {
+        console.log(doc);
+        this.items = doc.data();
+        this.listArray = [doc.data()];
+        console.log(this.items);
+        this.userData = this.formbuilder.group({
+          name: [this.items.name],
+          shortName: [this.items.shortName],
+          email: [null, [Validators.required, Validators.minLength(5)]],
+          img: [null],
+          isAdmin: [null],
+          isProfessor: [null]
+        });
+      });
+    });
 
+  };
   //Configuração para abrir e capturar dados da imagem
   public openGallery() {
     const options: CameraOptions = {
@@ -129,7 +132,7 @@ export class AccountEditComponent implements OnInit {
     const storage = getStorage();
     this.ref = ref(
       storage,
-      `images/${this.items.uid}/${this.dataAtual}-${this.input.files[0].name}`
+      `images/${this.uid}/${this.dataAtual}-${this.input.files[0].name}`
     );
     uploadBytesResumable(this.ref, this.input.files[0])
       .then((snapshot) => {
@@ -166,7 +169,7 @@ export class AccountEditComponent implements OnInit {
             const storage = getStorage();
             const gsReference = ref(
               storage,
-              `gs://vitor-f-app.appspot.com/images/${this.items.name}/${this.dataAtual}-${this.input.files[0].name}`
+              `gs://vitor-f-app.appspot.com/images/${this.uid}/${this.dataAtual}-${this.input.files[0].name}`
             );
             getDownloadURL(gsReference)
               .then(async (response) => {

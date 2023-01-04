@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from '@ionic/angular';
 import { doc, updateDoc, getFirestore, setDoc, collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { now } from 'jquery';
 Chart.register(...registerables);
 @Component({
   selector: 'app-tab3',
@@ -18,10 +19,13 @@ Chart.register(...registerables);
 })
 export class Tab3Page implements OnInit {
   data = new Date();
-  dia= String(this.data.getDate());
-  mes= String(this.data.toLocaleString('pt-BR', { month: 'long' }));
-  ano= String(this.data.getFullYear());
-  dataAtual= `${this.dia}-${this.mes}-${this.ano}`;
+  day= String(this.data.getDate());
+  month= String(this.data.toLocaleString('pt-BR', { month: 'long' }));
+  year= String(this.data.getFullYear());
+  hour=String(this.data.getHours());
+  minutes = String(this.data.getMinutes());
+  horaAtual = `${this.hour}:${this.minutes}`;
+  dataAtual= `${this.day}-${this.month}-${this.year}`;
   dateForm;
   list;
   id;
@@ -37,6 +41,10 @@ export class Tab3Page implements OnInit {
     private alertController: AlertController,
     ) {}
     ngOnInit(){
+      if (this.day.length < 10) {
+        this.day = String('0' + this.data.getDate()).slice(-2);
+      }
+      console.log(this.day);
       onAuthStateChanged(this.auth, (user) => {
         this.uid = user.uid;
         this.docRef = collection(this.db, 'history/');
@@ -83,9 +91,13 @@ export class Tab3Page implements OnInit {
   }
 
 async registerTraining(){
-  await setDoc(doc(this.db, 'history/', `${this.uid}/` + `${this.ano}/` + `${this.mes}/` + `${this.dia}/` + 'treinos'), {
-  musculacao: 1,
-  natacao: 0,
+  await addDoc(collection(this.db, 'users/', `${this.uid}/` + `history/`), {
+  day: this.day,
+  month:this.month,
+  year:this.year,
+  musc: 1,
+  swim: 0,
+  hour:this.horaAtual,
   });
   this.presentAlert();
 }
