@@ -31,9 +31,7 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
-            ],
+            "scripts": ["node_modules/jquery/dist/jquery.min.js"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -123,10 +121,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
@@ -172,9 +167,7 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": "cc511def-8e90-4653-8744-c10382f07814"
   },
   "schematics": {

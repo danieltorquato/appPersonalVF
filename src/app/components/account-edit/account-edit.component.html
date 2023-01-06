@@ -16,11 +16,17 @@
           <input type="text" id="nameInput" value="{{user.name}}" placeholder="Nome" formControlName="name">
           <input type="text" value="{{user.shortName}}" placeholder="Apelido" formControlName="shortName">
           <input type="email" id="email" value="{{user.email}}" placeholder="E-mail" readonly>
-          <input type="password" id="passwordEdit" placeholder="Atualize sua senha">
-          <input type="password" placeholder="Confirme sua senha">
+          <ion-grid class="measurements">
+            <ion-row>
+           <h5 class="informations">  Peso</h5>
+              <ion-col><h1>58</h1></ion-col>
+        <h5 class="informations">    Altura</h5>
+              <ion-col><h1>1,80</h1></ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-list>
         <ion-button color="success" type="submit">Salvar alterações</ion-button> <br>
-        <ion-button color="danger">Voltar ao menu</ion-button>
+        <ion-button color="danger" href="/tabs/tab2">Voltar ao menu</ion-button>
       </form>
 
     </div>

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="titleHeader">
+      Musculação
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-row>
+    <ion-col [routerLink]="['/musc-informations']" class="imgTrainingBox">
+
+      <!-- <ion-img class="imgTraining" src="https://img.freepik.com/vetores-gratis/modelo-de-design-de-graficos-de-marketing-azul_52683-24522.jpg?w=2000">
+      </ion-img> -->
+      <canvas  id="charts" width="400" height="200"></canvas>
+      <p>Detalhes de Treinos</p>
+      </ion-col>
+  </ion-row>
+  <ion-card class="card2" [routerLink]="['/musc-training']" routerDirection="forward">
+    <img src="https://www.dicasdetreino.com.br/wp-content/uploads/2019/06/Dicas-para-quem-faz-muscula%C3%A7%C3%A3o.jpg" alt="">
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-card>
+  <ion-button class="trainingInit" expand="block" color="tertiary" (click)="registerTraining()">Iniciar Treino</ion-button>
+  <ion-col class="buttonLogout">
+  </ion-col>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</ion-content>

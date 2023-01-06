@@ -1,10 +1,47 @@
-<ion-list *ngFor="let items of list">
- <h3>Nome: </h3> {{ items.exercicio.id.name }}
- <h3>Observações: </h3>  {{ items.exercicio.id.observations }}
- <h3>Repetições: </h3>  {{ items.exercicio.id.repetitions }}
- <h3>Series: </h3>  {{ items.exercicio.id.series }}
- <h3>Peso: </h3> {{ items.exercicio.id.weight }}
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <a href="tabs/tab2">
+      <ion-icon slot="start" name="close"></ion-icon>
+    </a>
+    <ion-title>Header</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-</ion-list>
 
+  <!-- Slider main container -->
+<ion-card>
+      <img alt="Silhouette of mountains" class="card_image"
+        src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
 
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+    <div class="buttons">
+      <ion-button>Anterior</ion-button>
+      <ion-button>Concluído</ion-button>
+      <ion-button>Próximo</ion-button>
+    </div>
+    <div class="swiper-slide"><ion-card>
+      <img alt="Silhouette of mountains" class="card_image"
+        src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+    <div class="buttons">
+      <ion-button>Anterior</ion-button>
+      <ion-button>Concluído</ion-button>
+      <ion-button>Próximo</ion-button>
+    </div></div>
+  </ion-content>

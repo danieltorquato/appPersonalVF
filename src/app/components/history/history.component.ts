@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { doc, updateDoc, getFirestore, onSnapshot, collection, getDocs, getDoc, query } from 'firebase/firestore';
 import { Validators } from '@angular/forms';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -44,5 +45,10 @@ ano= String(this.data.getFullYear());
     });
 
 
+}
+onIonInfinite(ev) {
+  setTimeout(() => {
+    (ev as InfiniteScrollCustomEvent).target.complete();
+  }, 500);
 }
 }

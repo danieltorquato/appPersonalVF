@@ -7,6 +7,7 @@ import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
+import { MuscHomeComponent } from '../components/musc-home/musc-home.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
     Tab3PageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab3Page, MuscHomeComponent]
 })
 export class Tab3PageModule {}

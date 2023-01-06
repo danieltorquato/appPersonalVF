@@ -81,6 +81,7 @@
     justify-content: center;
     position: relative;
     top: 50px;
+    text-align: center;
   }
   .editData>*{
     margin: 5%;
@@ -103,5 +104,8 @@ ion-button{
 .teste{
   position: relative;
 top: -65%;
+text-align: center;
+}
+ion-row{
 text-align: center;
 }

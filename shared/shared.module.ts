@@ -11,7 +11,7 @@ import { SharedComponent } from './shared.component';
     CommonModule,
     IonicModule
   ],
-  exports:[TimerComponent, ExercisesComponent, HomePainelStudentComponent],
-  declarations: [SharedComponent, TimerComponent, ExercisesComponent, HomePainelStudentComponent]
+  exports:[TimerComponent, HomePainelStudentComponent],
+  declarations: [SharedComponent, TimerComponent, HomePainelStudentComponent]
 })
 export class SharedModule { }
