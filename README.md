@@ -1,6 +1,6 @@
 <h1 align="center">Vitor Ferreira Personal APP</h1>
 
-Idealizado pelo Personal Vitor Ferreira, fui designado a desenvolver um app para facilitar o dia dia de alunos e professores, o projeto contará com funções para musculação e piscina, sendo elas:
+Idealizado pelo Personal Vitor Ferreira, fui designado a desenvolver um app para facilitar o dia dia de alunos e professores, o projeto contará com funções para musculação e natação, sendo elas:
 <p align="center">
 <ul>
 <li>Agendamento de aulas</li>
@@ -12,7 +12,7 @@ Idealizado pelo Personal Vitor Ferreira, fui designado a desenvolver um app para
 <li>Entre outros...</li>
 </ul>
 <p align="center">
-<img src="src/assets/img/giftela.gif">
+<img src="src/assets/img/home.png">
 </p>
 </p>
 
@@ -27,5 +27,5 @@ Idealizado pelo Personal Vitor Ferreira, fui designado a desenvolver um app para
 
 <p align="center">Você Personal pode controlar e montar o treino dos alunos, à partir de sua lista de alunos, controle, veja quem são seus alunos, para melhor gerenciá-los.</p>
 <p align="center">
-<img src="src/assets/img/listaalunos.png">
+<img src="src/assets/img/listaalunos2.png">
 </p>

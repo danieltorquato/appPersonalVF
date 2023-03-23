@@ -18,6 +18,6 @@ import { MuscTrainingPage } from './musc-training.page';
     MuscTrainingPageRoutingModule,
     SharedModule
   ],
-  declarations: [MuscTrainingPage ]
+  declarations: [MuscTrainingPage, ExercisesComponent ]
 })
 export class MuscTrainingPageModule {}
