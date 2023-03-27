@@ -1,3 +1,4 @@
+import { UserdadosService } from './services/userdados.service';
 import { HomePainelStudentComponent } from './components/home-painel-student/home-painel-student.component';
 import { SharedModule } from './../../shared/shared.module';
 import { FormBuilder, FormsModule } from '@angular/forms';
@@ -24,7 +25,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
     // eslint-disable-next-line max-len
     IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule],
   // eslint-disable-next-line max-len
-  providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage],
+  providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage, UserdadosService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

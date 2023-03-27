@@ -1,0 +1,38 @@
+  .firstPainel{
+  background-color: #00006d;
+  height: 400%;
+  border-radius: 100px 100px 50px 50px;
+  position: relative;
+  top: 50px;
+
+  }
+  h1{
+    text-align: center;
+  }
+  .editData{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+   align-content: center;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+    text-align: center;
+  }
+  .editData>*{
+    margin: 5%;
+    height: 50px;
+    background-color: transparent;
+    outline: none;
+    border: solid 1px rgb(49, 49, 235);
+    border-radius: 10px;
+  }
+ion-button{
+  position: relative;
+  top: 65px;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 95%;
+  left: 2.5%;
+}

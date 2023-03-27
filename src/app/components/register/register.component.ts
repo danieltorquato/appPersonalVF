@@ -15,7 +15,6 @@ import 'firebase/firestore';
 export class RegisterComponent implements OnInit {
   signUp: any;
   db = getFirestore();
-user: LoginPage;
   uid: string;
   constructor(
     private formbuilder: FormBuilder,

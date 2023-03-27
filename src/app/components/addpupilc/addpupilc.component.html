@@ -1,0 +1,20 @@
+<ion-grid>
+  <ion-col>
+    <h1>Cadastrar Aluno</h1>
+    <div class="firstPainel">
+      <form [formGroup]="signUp" (ngSubmit)="register()">
+        <ion-list class="editData">
+          <input type="text" id="nameInput" placeholder="Nome" formControlName="name">
+          <input type="text"  placeholder="Apelido" formControlName="shortName" >
+          <input type="email" id="email" placeholder="E-mail" formControlName="email">
+          <input type="password" id="password" placeholder="Senha" formControlName="password">
+          <input type="text" id="passwordConfirm" placeholder="Confirme Sua Senha" >
+        </ion-list>
+        <ion-button color="success" type="submit">Salvar alterações</ion-button> <br>
+        <ion-button color="danger" href="/tabs/tab2">Voltar ao menu</ion-button>
+      </form>
+
+    </div>
+
+  </ion-col>
+</ion-grid>
