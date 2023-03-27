@@ -25,6 +25,7 @@ export class PupilsComponent implements OnInit {
   uid: string;
   dataArray: any[] = [];
   datas: any;
+
   constructor() {}
 
   async ngOnInit() {
@@ -41,7 +42,6 @@ export class PupilsComponent implements OnInit {
         this.data = await getDoc(docRef);
         console.log(this.data.uid);
         console.log(this.data.id);
-
         const docRefs = doc(this.db, 'users', this.uid, 'pupils', this.data.id);
         console.log(this.data.id);
         setDoc(docRefs, this.data.data());
