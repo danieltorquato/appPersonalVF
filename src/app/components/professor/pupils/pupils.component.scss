@@ -1,4 +1,18 @@
-ion-thumbnail{
-  display: flex;
-  margin: auto;
+ion-item {
+  margin-bottom: 5px;
+  // text-align: center;
+  ion-thumbnail {
+    height: 100%;
+    width: 30%;
+
+  }
+img{
+  border-radius: 200px;
+}
+}
+h1{
+  text-align: center;
+}
+.informationData{
+  font-weight: bold;
 }

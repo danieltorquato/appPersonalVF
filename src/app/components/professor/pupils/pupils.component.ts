@@ -11,6 +11,7 @@ import {
   setDoc,
   where,
 } from 'firebase/firestore';
+import * as _ from 'lodash';
 @Component({
   selector: 'app-pupils',
   templateUrl: './pupils.component.html',
@@ -25,10 +26,12 @@ export class PupilsComponent implements OnInit {
   uid: string;
   dataArray: any[] = [];
   datas: any;
-
+  results: any;
+  queryText: string;
   constructor() {}
 
   async ngOnInit() {
+    this.queryText='';
     onAuthStateChanged(this.auth, async (user) => {
       this.uid = user.uid;
       console.log(this.uid);
@@ -40,14 +43,29 @@ export class PupilsComponent implements OnInit {
         this.id = docs.id;
         const docRef = doc(this.db, 'users', this.id);
         this.data = await getDoc(docRef);
-        console.log(this.data.uid);
         console.log(this.data.id);
         const docRefs = doc(this.db, 'users', this.uid, 'pupils', this.data.id);
         console.log(this.data.id);
         setDoc(docRefs, this.data.data());
         // eslint-disable-next-line @typescript-eslint/no-shadow
         this.dataArray.push(this.data.data());
+        console.log(this.dataArray);
+        this.results = this.dataArray;
       });
     });
+  }
+  handleChange(event) {
+
+    console.log(event.target.value);
+    const query = event.target.value;
+    // eslint-disable-next-line eqeqeq
+    if (query && query.trim() != '') {
+      this.results = _.values(this.dataArray);
+      console.log(this.results);
+      this.results = this.results.filter((dados) => dados.name.toLowerCase().indexOf(query.toLowerCase()) > -1);
+      console.log(this.results);
+    }else{
+      this.results = this.dataArray;
+    }
   }
 }

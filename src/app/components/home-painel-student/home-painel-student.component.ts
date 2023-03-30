@@ -27,7 +27,7 @@ export class HomePainelStudentComponent implements OnInit {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const docRef = onSnapshot(doc(this.db, 'users/', this.uid), (doc) => {
 
-        console.log('Current data: ', doc.data());
+        // console.log('Current data: ', doc.data());
         this.items = doc.data();
         this.listArray = [doc.data()];
       });

@@ -1,49 +1,65 @@
 <div class="firstPainel">
-<ion-list *ngFor="let item of list">
+
+  <ion-list *ngFor="let user of listArray">
     <ion-card class="cardPerfil">
 
-  <h2>{{item.name}}</h2>
-  <h6>Editar Perfil</h6>
+  <h2>{{user.name}}</h2>
+  <h6><a href="/account">Editar Perfil</a></h6>
     </ion-card>
-    <img class="iconImg" src="{{item.img}}" alt="">
+    <img class="iconImg" src="{{user.img}}" alt="">
+  </ion-list>
+
+<a>
     <button class="iconAlert icons">
       <p class="iconText">Alertas</p>
       <img class="imgAlert" src="https://img.icons8.com/ios/30/000000/alarms.png"/>
     </button>
-    <!-- <button class="iconAlert2 icons">
-      Alertas
-    </button> -->
-  </ion-list>
+</a>
+  <!-- <button class="iconAlert2 icons">
+    Alertas
+  </button> -->
 </div>
 <div class="secondPainel">
-  <button class="icons">
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-    <p>Feedback</p>
-  </button>
-  <button class="icons">
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-    <p>Feedback</p>
-  </button>
-  <button class="icons">
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-    <p>Feedback</p>
-  </button>
-
-  <a href="/add-exercises">
+<a href="/pupils">
     <button class="icons">
-
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-    <p>Treinos</p>
+      <img src="https://img.icons8.com/017bcc/treadmill"/>
+      <p style="font-size: 13px;">Alunos</p>
     </button>
-  </a>
- <a href="/student-training-v">
+</a>
+<a href="/history">
     <button class="icons">
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-    <p>Treino Aluno</p>
+      <img src="https://img.icons8.com/017bcc/clock"/>
+      <p>Histórico</p>
+    </button>
+</a>
+ <a href="/schedule">
+    <button class="icons" >
+      <img src="https://img.icons8.com/ios/50/017bcc/view-shedule.png"/>
+      <p>Agenda</p>
     </button>
  </a>
-  <button class="icons" routerLink="/schedule">
-  <img src="https://img.icons8.com/ios-glyphs/30/000000/chat.png"/>
-  <p>Feedback</p>
-  </button>
+
+<a>
+    <button class="icons">
+
+    <img src="https://img.icons8.com/017bcc/strength"/>
+    <p>Meu treino</p>
+    </button>
+</a>
+  <a>
+    <button class="icons">
+    <img src="https://img.icons8.com/017bcc/guest-male"/>
+    <p>Amigos</p>
+    </button>
+  </a>
+  <a>
+    <button class="icons">
+    <img src="https://img.icons8.com/017bcc/swimming"/>
+    <p>Natação</p>
+    </button>
+  </a>
+
+  <p></p>
+<ion-button (click)='logout()'></ion-button>
 </div>
+
