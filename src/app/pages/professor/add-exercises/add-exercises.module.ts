@@ -4,13 +4,13 @@ import { AddExerciseComponent } from './../../../components/professor/add-exerci
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 import { AddExercisesPageRoutingModule } from './add-exercises-routing.module';
 
 import { AddExercisesPage } from './add-exercises.page';
-
+import 'simple-circular-progress';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +22,7 @@ import { AddExercisesPage } from './add-exercises.page';
     AngularFireStorage,
     File
   ],
-  declarations: [AddExercisesPage, AddExerciseComponent]
+  declarations: [AddExercisesPage, AddExerciseComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AddExercisesPageModule {}

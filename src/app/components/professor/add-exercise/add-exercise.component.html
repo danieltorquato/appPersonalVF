@@ -1,17 +1,58 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Adicionar Treino</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-div>
+    <h1>Cadastrar Exercício</h1>
 
-<ion-content>
+<div><ion-searchbar></ion-searchbar>
+</div>
+<div>
+  <ion-list>
+    <ion-item-sliding>
+    <ion-item lines="full">
+      <ion-thumbnail slot="start">
+        <img/>
+      </ion-thumbnail>
 
-  <div class="botaoArquivo">{{   this.divHTML  }}</div>
-<input type="file" (click)="openGallery()" id="fileName">
-<input type="button" (click)="uploadImageUser()" value="Enviar">
-<input type="button" value="Alo" id="upload" (click)="uploadImage()">
+      <ion-div><div><h2></h2>
 
-</ion-content>
+      </div>
+  <h3> Teste</h3>
+  <p><span class="informationData">Email:</span > </p>
+    <a href=""> <u> <p>Ver detalhes</p></u></a>
+      </ion-div>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="secondary"><img src="https://img.icons8.com/pastel-glyph/64/null/information--v1.png"/></ion-item-option>
+      <ion-item-option color="danger"><img src="https://img.icons8.com/ios/50/null/trash--v2.png"/></ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+
+</div>
+<div>
+  <ion-card>
+    <ion-card-title><input type="text" placeholder="Digite o nome do exercício"></ion-card-title>
+    <ion-card-subtitle>
+      <input type="text" placeholder="Variação do exercício">
+</ion-card-subtitle>
+<ion-card-content>
+  <ion-list>
+    <ion-item>
+      <ion-select
+        aria-label="Food"
+        [compareWith]="compareWith"
+        placeholder="Selecione os músculos"
+        (ionChange)="handleChange($event)"
+        [multiple]="true"
+      >
+        <ion-select-option *ngFor="let food of foods" [value]="food">{{ food.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-div>Current value: {{ currentFood | json}}</ion-div>
+    </ion-item>
+  </ion-list>
+</ion-card-content>
+  </ion-card>
+</div>
+
+</ion-div>
+
