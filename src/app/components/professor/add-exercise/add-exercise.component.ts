@@ -1,4 +1,12 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
+/* eslint-disable @typescript-eslint/no-shadow */
 import { Component, OnInit } from '@angular/core';
+import { Exercicio } from '../../../models/exercicios.model';
+import { ExerciciosService } from '../../../services/exercicios.service';
+import { addDoc, collection, doc, setDoc, getDocs } from 'firebase/firestore';
+import { db } from 'src/environments/environment';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-add-exercise',
@@ -6,44 +14,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-exercise.component.scss'],
 })
 export class AddExerciseComponent implements OnInit {
-  currentFood = undefined;
+  exercicio: Exercicio = { nome: '', descricao: '', categoria: '' };
+  items = [];
+  constructor(private exerciciosService: ExerciciosService) {}
 
-  foods = [
-    {
-      id: 1,
-      name: 'Apples',
-      type: 'fruit',
-    },
-    {
-      id: 2,
-      name: 'Carrots',
-      type: 'vegetable',
-    },
-    {
-      id: 3,
-      name: 'Cupcakes',
-      type: 'dessert',
-    },
-  ];
+ async ngOnInit() {
 
-  constructor() {}
-
-  ngOnInit() {
+    const querySnapshot = await getDocs(collection(db, 'exercicios'));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      this.items.push(doc.data());
+    });
 
   }
-  compareWith(o1, o2) {
-    if (!o1 || !o2) {
-      return o1 === o2;
-    }
-
-    if (Array.isArray(o2)) {
-      return o2.some((o) => o.id === o1.id);
-    }
-
-    return o1.id === o2.id;
+  adicionarExercicio() {
+    this.exerciciosService.adicionarExercicio(this.exercicio)
+      .then(async () => {
+        console.log('Exercício adicionado com sucesso!');
+        // faça algo após adicionar o exercício, se necessário
+        // const docRef = await addDoc(collection(db, 'exercicios'), {
+        //   nome: this.exercicio.nome,
+        //   descricao: this.exercicio.descricao,
+        //   categoria: this.exercicio.categoria
+        // });
+      })
+      .catch(error => console.error('Erro ao adicionar exercício:', error));
   }
-
-  handleChange(ev) {
-    this.currentFood = ev.target.value;
+  onIonInfinite(ev) {
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 }

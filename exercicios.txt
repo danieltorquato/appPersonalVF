@@ -1,4 +1,234 @@
-[
+/*
+Quadríceps:
+
+Agachamento
+Leg press
+Cadeira extensora
+Extensão de joelhos
+Afundo
+Agachamento hack
+Leg press 45º
+Avanço
+Agachamento sumô
+Agachamento frontal
+Agachamento com salto
+Agachamento unilateral
+Agachamento com barra hexagonal
+Peito:
+
+Supino
+Crucifixo
+Flexão de braços
+Crossover
+Supino inclinado
+Flexão de braços inclinado
+Crucifixo inclinado
+Supino declinado
+Flexão de braços com pegada fechada
+Fly inclinado
+Fly reto
+Fly declinado
+Pullover
+Costas:
+
+Barra fixa
+Levantamento terra
+Remada baixa
+Puxada alta
+Remada cavalinho
+Remada sentada
+Remada curvada
+Remada unilateral
+Pull down
+Pull over
+Hiperextensão lombar
+Pull up
+Remada com halteres
+Remada com cabo
+Bíceps:
+
+Rosca direta
+Rosca martelo
+Rosca inversa
+Rosca Scott
+Rosca concentrada
+Rosca alternada
+Rosca 21
+Rosca com cabo
+Rosca com barra Z
+Rosca com halteres
+Rosca com corda
+Rosca no banco inclinado
+Ombros:
+
+Desenvolvimento de ombros
+Elevação lateral
+Elevação frontal
+Press militar
+Elevação de ombros
+Desenvolvimento Arnold
+Desenvolvimento com halteres
+Elevação lateral na máquina
+Elevação frontal com halteres
+Elevação frontal na máquina
+Desenvolvimento com barra
+Remada alta
+Tríceps:
+
+Tríceps pulley
+Tríceps coice
+Paralelas
+Tríceps testa
+Tríceps francês
+Tríceps corda
+Tríceps mergulho
+Tríceps na polia alta
+Tríceps na polia baixa
+Tríceps com halteres
+Extensão de tríceps com barra reta
+Extensão de tríceps com halteres
+Glúteos:
+
+Leg press (também envolve os quadríceps)
+Glúteo 4 apoios
+Elevação de quadril
+Abdução de quadril
+Glúteo no cabo
+Step up
+Agachamento sumô
+Glúteo com halteres
+Agachamento com banda elástica
+
+Panturrilhas:
+
+Elevação de panturrilhas em pé
+Elevação de panturrilhas sentado
+Elevação de panturrilhas unilateral
+Elevação de panturrilhas no hack
+Elevação de panturrilhas no smith
+Elevação de panturrilhas no leg press
+Elevação de panturrilhas no step
+Elevação de panturrilhas com halteres
+Elevação de panturrilhas com barra
+Abdômen:
+
+Crunch abdominal
+Prancha
+Russian twist
+Bicicleta no solo
+Elevação de pernas
+Prancha lateral
+Crunch invertido
+Prancha com elevação de perna
+Flexão lateral de tronco
+Abdominal na bola suíça
+Abdominal com rotação de tronco
+Abdominal no banco declinado
+Abdominal no banco inclinado
+Abdominal na polia alta
+Lombar:
+
+Hiperextensão lombar
+Bom dia
+Stiff
+Good morning
+Superman
+Prancha lombar
+Levantamento terra stiff
+Hiperextensão lombar unilateral
+Bom dia com barra
+Bom dia com halteres
+Bom dia com kettlebell
+Bom dia com smith
+Treino funcional:
+
+Burpee
+Agachamento pistol
+Salto com caixa
+Subida de caixa
+Escalada na corda
+Farmer's walk
+Swing de kettlebell
+Clean and jerk
+Remada com corda
+Medicine ball slam
+Salto pliométrico
+Sled push
+Sled pull
+Treino cardiovascular:
+
+Esteira
+Bicicleta ergométrica
+Elíptico
+Remo
+Stairmaster
+Corrida ao ar livre
+Caminhada ao ar livre
+Aeróbica
+Spinning
+Zumba
+Dança
+Natação
+Boxe
+Kickboxing
+
+pernas
+Isquiotibiais:
+
+Flexão de pernas deitado
+Stiff com barra
+Stiff com halteres
+Cadeira flexora
+Leg curl
+Mesa flexora
+Flexão de pernas unilateral
+Flexão de pernas na polia baixa
+Flexão de pernas na polia alta
+Flexão de pernas com faixa elástica
+Peso morto
+Coxas internas:
+
+Adutor na máquina
+Adutor na polia
+Adutor no cabo
+Adutor com bola suíça
+Adutor em pé
+Adutor sentado
+Adutor deitado
+Adutor com faixa elástica
+Adutor com halteres
+Adutor com elástico
+Adutor com caneleira
+Adutor com anilha
+Coxas externas:
+
+Abdutor na máquina
+Abdutor na polia
+Abdutor com bola suíça
+Abdutor em pé
+Abdutor sentado
+Abdutor deitado
+Abdutor com faixa elástica
+Abdutor com halteres
+Abdutor com elástico
+Abdutor com caneleira
+Abdutor com anilha
+Cárdio para pernas:
+
+Caminhada na esteira em inclinação
+Caminhada na esteira em velocidade
+Subida de escada
+Step
+Bike ergométrica em alta intensidade
+Agachamento com salto
+Salto em caixa
+Saltos pliométricos
+Treino de corrida
+Treino de ciclismo
+*/
+
+{
+  "exercicios": [
     {
       "id": 1,
       "nome": "Agachamento",
@@ -891,4 +1121,5 @@
 "descricao": "Exercício que trabalha os músculos do tríceps, com ênfase na cabeça medial do tríceps, realizado com pegada mais fechada do que o supino convencional.",
 "categoria": "Braços"
 }
-]
+  ]
+}
