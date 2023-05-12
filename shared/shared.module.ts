@@ -5,13 +5,14 @@ import { TimerComponent } from './../src/app/components/timer/timer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponent } from './shared.component';
+import { PupilsComponent } from 'src/app/components/professor/pupils/pupils.component';
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule
   ],
-  exports:[TimerComponent, HomePainelStudentComponent],
+  exports:[TimerComponent, HomePainelStudentComponent, SharedComponent],
   declarations: [SharedComponent, TimerComponent, HomePainelStudentComponent]
 })
 export class SharedModule { }

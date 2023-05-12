@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 /* eslint-disable @typescript-eslint/no-shadow */
 import { Component, OnInit } from '@angular/core';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
@@ -12,6 +13,7 @@ import {
   where,
 } from 'firebase/firestore';
 import * as _ from 'lodash';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-pupils',
   templateUrl: './pupils.component.html',
@@ -28,6 +30,8 @@ export class PupilsComponent implements OnInit {
   datas: any;
   results: any;
   queryText: string;
+  segment: string | number | string[];
+  navCtrl= NavController;
   constructor() {}
 
   async ngOnInit() {
@@ -67,5 +71,8 @@ export class PupilsComponent implements OnInit {
     }else{
       this.results = this.dataArray;
     }
+  }
+  async pegaId(id){
+  console.log(id);
   }
 }

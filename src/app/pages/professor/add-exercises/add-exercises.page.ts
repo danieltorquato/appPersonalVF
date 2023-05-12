@@ -6,7 +6,9 @@ import * as $ from 'jquery';
   styleUrls: ['./add-exercises.page.scss'],
 })
 export class AddExercisesPage implements OnInit {
-
+  public chartType = 'doughnut';
+  public chartData = [300, 50, 100];
+  public chartLabels = ['Red', 'Yellow', 'Blue'];
   constructor() { }
 
   ngOnInit() {

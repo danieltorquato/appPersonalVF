@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nome": "Supino",
+    "variação": "Supino Reto",
+    "categoria": "Peito",
+    "vídeo": ""
+  },
+  {
+    "id": 2,
+    "nome": "Agachamento",
+    "variação": "Agachamento Livre",
+    "categoria": "Pernas",
+    "vídeo": ""
+  },
+  {
+    "id": 3,
+    "nome": "Desenvolvimento",
+    "variação": "Desenvolvimento com Barra",
+    "categoria": "Ombros",
+    "vídeo": ""
+  },
+  {
+    "id": 4,
+    "nome": "Remada",
+    "variação": "Remada Curvada",
+    "categoria": "Costas",
+    "vídeo": ""
+  },
+  {
+    "id": 5,
+    "nome": "Abdominal",
+    "variação": "Prancha Abdominal",
+    "categoria": "Abdominais",
+    "vídeo": ""
+  },
+  {
+    "id": 6,
+    "nome": "Elevação de Panturrilha",
+    "variação": "Elevação de Panturrilha Sentado",
+    "categoria": "Panturrilhas",
+    "vídeo": ""
+  }
+]

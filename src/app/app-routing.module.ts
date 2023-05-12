@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/professor/feedbacks/feedbacks.module').then( m => m.FeedbacksPageModule)
   },
   {
-    path: 'add-exercises',
+    path: 'add-exercises/:info',
     loadChildren: () => import('./pages/professor/add-exercises/add-exercises.module').then( m => m.AddExercisesPageModule)
   },
   {

@@ -18,12 +18,13 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/compat/storage';
 import { Camera} from '@awesome-cordova-plugins/camera/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
     // eslint-disable-next-line max-len
-    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule],
+    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule, NgChartsModule],
   // eslint-disable-next-line max-len
   providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage, UserdadosService],
   bootstrap: [AppComponent],
