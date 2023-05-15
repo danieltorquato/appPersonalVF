@@ -13,7 +13,7 @@ import { addDoc, collection, doc, setDoc, getDocs, QuerySnapshot, query, where, 
 import { db } from 'src/environments/environment';
 import * as $ from 'jquery';
 import { ActivatedRoute } from '@angular/router';
-import Chart from 'chart.js/auto';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',
@@ -33,35 +33,57 @@ export class AddExerciseComponent implements OnInit {
   isModalOpen = false;
  id:  string;
  pupilsItem = [];
+ trainingItems = [];
  component = PupilsComponent;
+  uid: string;
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
   constructor(private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute ) {}
-  public chartType = 'doughnut';
-  public chartData = [300, 50, 100];
-  public chartLabels = ['Red', 'Yellow', 'Blue'];
  async ngOnInit() {
-    // const querySnapshot = await getDocs(collection(db, 'exercicios'));
-    // querySnapshot.forEach((doc) => {
-    //   doc.data() is never undefined for query doc snapshots
-    //   this.items.push(doc.data());
-    // });
-    // this.filterItems = this.items;
-    // console.log(this.filterItems);
-  this.id = this.activatedRoute.snapshot.paramMap.get('info');
-console.log(this.id);
-const querySnapshot = await doc(db, 'users', `${this.id}`);
-const docSnap = await getDoc(querySnapshot);
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-  this.pupilsItem.push(docSnap.data());
-  console.log(this.pupilsItem);
-} else {
-  // docSnap.data() will be undefined in this case
-  console.log("No such document!");
-}
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      this.uid = user.uid;
+      console.log(this.uid);
+      this.usePupil();
+      this.currentTraining();
+    } else {
+      alert('Você precisa estar logado');
+    }
+  });
+
+
+
   }
+
+  async usePupil(){
+    this.id = this.activatedRoute.snapshot.paramMap.get('info');
+    console.log(this.id);
+    const querySnapshot = await doc(db, 'users', `${this.id}`);
+    const docSnap = await getDoc(querySnapshot);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      this.pupilsItem.push(docSnap.data());
+      console.log(this.pupilsItem);
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  async currentTraining(){
+    this.trainingItems = [];
+    const querySnapshot = await getDocs(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      this.trainingItems.push(doc.data());
+      console.log(this.trainingItems);
+    });
+  }
+
   async buscarDados(){
     const querySnapshot = await getDocs(collection(db, 'exercicios'));
     this.items = [];
