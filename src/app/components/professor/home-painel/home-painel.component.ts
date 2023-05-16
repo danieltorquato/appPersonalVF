@@ -32,6 +32,7 @@ export class HomePainelComponent implements OnInit {
         console.log('Current data: ', doc.data());
         this.items = doc.data();
         this.listArray = [doc.data()];
+        console.log(this.listArray);
       });
     });
   }
@@ -52,5 +53,8 @@ export class HomePainelComponent implements OnInit {
         console.log(errorCode);
         console.log(errorMessage);
       });
+  }
+  pegaId(id){
+    console.log(id);
   }
 }

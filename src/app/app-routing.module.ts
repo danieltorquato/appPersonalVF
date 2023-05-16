@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'schedule',
-    loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
+    loadChildren: () => import('./pages/professor/schedule/schedule.module').then( m => m.SchedulePageModule)
   },
   {
     path: 'hours',
@@ -77,6 +77,10 @@ const routes: Routes = [
   {
     path: 'newpupilp',
     loadChildren: () => import('./pages/professor/newpupilp/newpupilp.module').then( m => m.NewpupilpPageModule)
+  },
+  {
+    path: 'history-pupils/:info',
+    loadChildren: () => import('./pages/professor/history-pupils/history-pupils.module').then( m => m.HistoryPupilsPageModule)
   },
 
 

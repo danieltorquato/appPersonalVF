@@ -26,8 +26,8 @@
       <p style="font-size: 13px;">Alunos</p>
     </button>
 </a>
-<a href="/history">
-    <button class="icons">
+<a href="/history-pupils">
+    <button class="icons" *ngFor="let item of listArray" (click)="pegaId(item.id)" routerLink="/history-pupils/{{item.id}}">
       <img src="https://img.icons8.com/017bcc/clock"/>
       <p>Histórico</p>
     </button>

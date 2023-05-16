@@ -1,10 +1,49 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+// this.dateForm= this.formbuilder.group({
+//   date: [this.dataAtual]});
+
+//   const ctx = document.getElementById('charts') as HTMLCanvasElement;
+//   const myChart = new Chart(ctx, {
+//       type: 'line',
+//       data: {
+//           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//           datasets: [{
+//               label: '# of Votes',
+//               data: [20.3, 19.8, 19.7, 19.2, 19.4, 19.0],
+//               backgroundColor: [
+//                   'rgba(255, 99, 132, 0.2)',
+//                   'rgba(54, 162, 235, 0.2)',
+//                   'rgba(255, 206, 86, 0.2)',
+//                   'rgba(75, 192, 192, 0.2)',
+//                   'rgba(153, 102, 255, 0.2)',
+//                   'rgba(255, 159, 64, 0.2)'
+//               ],
+//               borderColor: [
+//                   'rgba(255, 99, 132, 1)',
+//                   'rgba(54, 162, 235, 1)',
+//                   'rgba(255, 206, 86, 1)',
+//                   'rgba(75, 192, 192, 1)',
+//                   'rgba(153, 102, 255, 1)',
+//                   'rgba(255, 159, 64, 1)'
+//               ],
+//               borderWidth: 1
+//           }]
+//       },
+//       options: {
+//           scales: {
+//               y: {
+//                   beginAtZero: false
+//               }
+//           }
+//       }
+//   });
 import { Chart} from 'chart.js';
 import { FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { AlertController } from '@ionic/angular';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, doc, onSnapshot, getDoc, setDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 @Component({
   selector: 'app-musc-home',
@@ -29,6 +68,7 @@ export class MuscHomeComponent implements OnInit {
   auth = getAuth();
   items;
   docRef: any;
+  docId: string;
   constructor(public storage: Storage,
     public navCtrl: NavController,
     public formbuilder: FormBuilder,
@@ -42,51 +82,16 @@ export class MuscHomeComponent implements OnInit {
     console.log(this.day);
     onAuthStateChanged(this.auth, (user) => {
       this.uid = user.uid;
-      this.docRef = collection(this.db, 'history/');
+      this.docRef = onSnapshot(doc(this.db, 'users', this.uid), (doc) => {
+        this.items = doc.data();
+        console.log('Current data: ', doc.data());
     });
-    this.dateForm= this.formbuilder.group({
-      date: [this.dataAtual]});
-
-      const ctx = document.getElementById('charts') as HTMLCanvasElement;
-      const myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-              datasets: [{
-                  label: '# of Votes',
-                  data: [20.3, 19.8, 19.7, 19.2, 19.4, 19.0],
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)'
-                  ],
-                  borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)',
-                      'rgba(75, 192, 192, 1)',
-                      'rgba(153, 102, 255, 1)',
-                      'rgba(255, 159, 64, 1)'
-                  ],
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              scales: {
-                  y: {
-                      beginAtZero: false
-                  }
-              }
-          }
-      });
+    });
 
 }
 
 async registerTraining(){
-await addDoc(collection(this.db, 'users/', `${this.uid}/` + `history/`), {
+const docRef = addDoc(collection(this.db, 'history', this.uid, this.year, this.month, this.day), {
 day: this.day,
 month:this.month,
 year:this.year,
@@ -94,9 +99,18 @@ musc: 1,
 swim: 0,
 hour:this.horaAtual,
 });
+this.docId = (await docRef).id;
+console.log(this.docId);
 this.presentAlert();
+const docRefT = setDoc(doc(this.db, 'users', this.items.professor,'pupils', this.uid, 'history', this.docId), {
+  day: this.day,
+  month:this.month,
+  year:this.year,
+  musc: 1,
+  swim: 0,
+  hour:this.horaAtual,
+  });
 }
-
 async presentAlert() {
 const alert = await this.alertController.create({
   header: 'Parabéns',

@@ -4,7 +4,7 @@ import { PupilsComponent } from 'src/app/components/professor/pupils/pupils.comp
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { OverlayEventDetail } from '@ionic/core/components';
 /* eslint-disable @typescript-eslint/member-ordering */
-import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonModal, NavController } from '@ionic/angular';
 /* eslint-disable @typescript-eslint/no-shadow */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Exercicio } from '../../../models/exercicios.model';
@@ -36,10 +36,14 @@ export class AddExerciseComponent implements OnInit {
  trainingItems = [];
  component = PupilsComponent;
   uid: string;
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
-  constructor(private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute ) {}
+exerciseName;
+exerciseCategory;
+exerciseVariation;
+exerciseWeight;
+exerciseObservation;
+
+
+  constructor(private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute, private navCtrl: NavController ) {}
  async ngOnInit() {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
@@ -55,10 +59,11 @@ export class AddExerciseComponent implements OnInit {
     }
   });
 
-
-
   }
-
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+    console.log('funciona');
+  }
   async usePupil(){
     this.id = this.activatedRoute.snapshot.paramMap.get('info');
     console.log(this.id);
@@ -92,8 +97,12 @@ export class AddExerciseComponent implements OnInit {
       this.filterItems = [];
       this.items.push(doc.data());
       this.filterItems = this.items;
+      this.exerciseName = doc.data().nome;
+      this.exerciseVariation = doc.data().variacao;
+      console.log(doc.data().nome);
     });
     console.log(this.items);
+
 }
 emptyList(){
   this.items=[];
@@ -119,6 +128,8 @@ emptyList(){
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
+    this.isModalOpen = false;
+    this.currentTraining();
   }
 
   confirm() {
@@ -160,5 +171,19 @@ this.filterItems = [];
       console.log(this.searchCategory);
     });
 
+    }
+   async addExerciseInTraining(nome, variacao){
+    if (variacao === undefined) {
+variacao = '';
+    }
+    console.log(nome, variacao);
+    const docRef = await addDoc(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'), {
+      nome: nome,
+      variacao: variacao,
+      peso: null,
+      observacao: '',
+      repeticoes: 12,
+      parcela: ''
+    });
     }
 }

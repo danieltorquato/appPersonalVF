@@ -19,7 +19,6 @@ import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/compat
 import { Camera} from '@awesome-cordova-plugins/camera/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { NgChartsModule } from 'ng2-charts';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
