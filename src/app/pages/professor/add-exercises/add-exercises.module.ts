@@ -10,7 +10,6 @@ import { IonicModule } from '@ionic/angular';
 import { AddExercisesPageRoutingModule } from './add-exercises-routing.module';
 
 import { AddExercisesPage } from './add-exercises.page';
-import 'simple-circular-progress';
 import { PupilsComponent } from 'src/app/components/professor/pupils/pupils.component';
 import { SharedModule } from 'shared/shared.module';
 import { SharedComponent } from 'shared/shared.component';

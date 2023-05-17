@@ -1,0 +1,24 @@
+[
+    {
+        "__id__": "5YkTctEpopgXFIMQKtRb",
+        "categoria": "Costas",
+        "nome": "Puxada"
+    },
+    {
+        "__id__": "n0PtEv1jTs6KTYHkuWl7",
+        "categoria": "Costas",
+        "nome": "Remada"
+    },
+    {
+        "__id__": "vTkilJ2WyeXwFAHU4oQA",
+        "categoria": "Peito",
+        "nome": "Supino",
+        "variacao": "Inclinado"
+    },
+    {
+        "__id__": "yw54IwVrW2E2qfDy2XzI",
+        "categoria": "Peito",
+        "nome": "Crucifixo",
+        "variacao": "Reto"
+    }
+]

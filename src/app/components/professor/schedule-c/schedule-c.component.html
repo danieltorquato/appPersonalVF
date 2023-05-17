@@ -2,15 +2,15 @@
 
 <ion-item>
   <ion-label>Agenda</ion-label>
-  <ion-datetime color="dark" [showDefaultButtons]="true" displayFormat="DD/MM/YYYY HH:mm" (click)="getSelectedDate()" [(ngModel)]="dateHour" minuteValues="0,30"></ion-datetime>
+  <ion-datetime color="dark" [showDefaultButtons]="true" displayFormat="DD/MM/YYYY HH:mm" (click)="getSelectedDate()" [(ngModel)]="dateHour" minuteValues="0,30">
+    <span slot="time-label"></span>
+  </ion-datetime>
 </ion-item>
 <ion-card>
   <ion-card-content>
 <ion-list>
   <ion-item>
-
-      <ion-chip [outline]="true">Outline</ion-chip>
-
+      <ion-chip>Outline</ion-chip>
   </ion-item>
 </ion-list>
 </ion-card-content>

@@ -33,7 +33,7 @@ ano= String(this.data.getFullYear());
     //Captura usuário atual
     onAuthStateChanged(this.auth, async (user) => {
       this.uid = user.uid;
-      const querySnapshots  = await getDocs(collection(this.db, 'users', this.uid, 'history'));
+      const querySnapshots  = await getDocs(collection(this.db, 'history', this.uid, this.ano));
     // eslint-disable-next-line @typescript-eslint/no-shadow
     querySnapshots.forEach((doc) => {
 

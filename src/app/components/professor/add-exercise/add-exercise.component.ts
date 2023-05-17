@@ -185,5 +185,13 @@ variacao = '';
       repeticoes: 12,
       parcela: ''
     });
+    const docRefPupil = await addDoc(collection(db, 'users', `${this.id}`,'treino'), {
+      nome: nome,
+      variacao: variacao,
+      peso: null,
+      observacao: '',
+      repeticoes: 12,
+      parcela: ''
+    });
     }
 }

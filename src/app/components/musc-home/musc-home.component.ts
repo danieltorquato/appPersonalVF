@@ -91,7 +91,7 @@ export class MuscHomeComponent implements OnInit {
 }
 
 async registerTraining(){
-const docRef = addDoc(collection(this.db, 'history', this.uid, this.year, this.month, this.day), {
+const docRef = addDoc(collection(this.db, 'history', this.uid, this.year), {
 day: this.day,
 month:this.month,
 year:this.year,

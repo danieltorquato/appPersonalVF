@@ -16,6 +16,6 @@ import { MuscInformationsPage } from './musc-informations.page';
     IonicModule,
     MuscInformationsPageRoutingModule
   ],
-  declarations: [MuscInformationsPage, ExercisesComponent]
+  declarations: [MuscInformationsPage]
 })
 export class MuscInformationsPageModule {}

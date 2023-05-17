@@ -1,0 +1,35 @@
+[
+    {
+        "__id__": "s9JdEeNoP4OyjDgasZMdjnffwq03",
+        "email": "danieltorquato2009@gmail.com",
+        "id": "s9JdEeNoP4OyjDgasZMdjnffwq03",
+        "img": "https://firebasestorage.googleapis.com/v0/b/vitor-f-app.appspot.com/o/images%2Fs9JdEeNoP4OyjDgasZMdjnffwq03%2F17-maio-2023-jupiter.jpg?alt=media&token=1795e301-3cff-46bb-a9a0-cb80eb7b9cbf",
+        "isAdmin": true,
+        "isProfessor": true,
+        "name": "Daniel Monteiro da Silva Torquato",
+        "professor": "tRoGdUKY8ddSedJjCEk9rbCyGdJ2",
+        "shortName": ""
+    },
+    {
+        "__id__": "tRoGdUKY8ddSedJjCEk9rbCyGdJ2",
+        "email": "joao@gmail.com",
+        "id": "tRoGdUKY8ddSedJjCEk9rbCyGdJ2",
+        "img": "https://firebasestorage.googleapis.com/v0/b/vitor-f-app.appspot.com/o/images%2FtRoGdUKY8ddSedJjCEk9rbCyGdJ2%2F23-mar%C3%A7o-2023-icon.png?alt=media&token=bb963339-7205-413c-ae7e-76306e460bba",
+        "isAdmin": false,
+        "isProfessor": false,
+        "name": "Joao Victor",
+        "professor": "s9JdEeNoP4OyjDgasZMdjnffwq03",
+        "shortName": "João"
+    },
+    {
+        "__id__": "wvRYvxGHZcab2gyfSdGmNEsS52n2",
+        "email": "d@t.com",
+        "id": "wvRYvxGHZcab2gyfSdGmNEsS52n2",
+        "img": "https://firebasestorage.googleapis.com/v0/b/vitor-f-app.appspot.com/o/images%2FwvRYvxGHZcab2gyfSdGmNEsS52n2%2F27-mar%C3%A7o-2023-WhatsApp%20Image%202023-03-26%20at%2018.01.24.jpeg?alt=media&token=3ca76114-04d5-49ba-88e0-c6e179fa3b01",
+        "isAdmin": false,
+        "isProfessor": true,
+        "name": "Daniel Monteiro da Silva Torquato",
+        "professor": "s9JdEeNoP4OyjDgasZMdjnffwq03",
+        "shortName": "Dan"
+    }
+]
