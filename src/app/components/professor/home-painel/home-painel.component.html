@@ -9,17 +9,41 @@
     <img class="iconImg" src="{{user.img}}" alt="">
   </ion-list>
 
-<a>
-    <button class="iconAlert icons">
-      <p class="iconText">Alertas</p>
-      <img class="imgAlert" src="https://img.icons8.com/ios/30/000000/alarms.png"/>
-    </button>
-</a>
-  <!-- <button class="iconAlert2 icons">
-    Alertas
-  </button> -->
 </div>
 <div class="secondPainel">
+ <div class="notifications">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <!-- Primeiro ícone e notificação -->
+          <div class="notification-icon">
+            <ion-badge>9</ion-badge>
+          <ion-icon name="chatbubbles-outline" class="iconsCard"></ion-icon>
+          <ion-label>Feedbacks</ion-label>
+          </div>
+        </ion-col>
+
+        <ion-col size="4">
+          <!-- Segundo ícone e notificação -->
+          <div class="notification-icon">
+            <ion-badge>2</ion-badge>
+          <ion-icon name="warning-outline" class="iconsCard"></ion-icon>
+          <ion-label>Atenção</ion-label>
+          </div>
+        </ion-col>
+
+        <ion-col size="4">
+          <!-- Terceiro ícone e notificação -->
+          <div class="notification-icon">
+            <ion-badge>3</ion-badge>
+          <ion-icon name="call-outline" class="iconsCard"></ion-icon>
+          <ion-label>Contatos</ion-label>
+        </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+ </div>
 <a href="/pupils">
     <button class="icons">
       <img src="https://img.icons8.com/017bcc/treadmill"/>

@@ -1,7 +1,8 @@
 .icons{
   height: 80px;
   width: 70px;
-  margin-top: 40px;
+  margin-top: 180px;
+  margin-bottom: -500px;
   margin-left: 13%;
   border-radius: 10px;
   background-color: transparent;
@@ -41,13 +42,6 @@
   top: 12%;
   left: 35%;
   }
-  .iconAlert{
-  position: absolute !important;
-  bottom: 60% !important;
-  right: 5% !important;
-  text-align: center;
-  background-color: transparent;
-  }
   // .iconAlert2{
   // position: absolute !important;
   // bottom: 60.5% !important;
@@ -73,3 +67,37 @@
   left: 11%;
   font-size: large;
   }
+.notifications{
+  margin: auto;
+  width: 85%;
+  height: 15%;
+  left: 8%;
+  position: fixed;
+  top: 25%;
+  border-radius: 60px;
+border: solid 1px white;
+}
+.fab-button-in-list, ion-fab-button{
+  width: 80px;
+  height: 80px;
+}
+.iconsCard{
+font-size: 50px;
+
+}
+.notification-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+
+.notification-icon ion-badge {
+  position: absolute;
+  top: -10px;
+  right: 2px;
+  padding: 5px 10px;
+  border-radius: 50%;
+}

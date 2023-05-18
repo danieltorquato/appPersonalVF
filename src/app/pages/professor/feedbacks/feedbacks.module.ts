@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FeedbacksPageRoutingModule } from './feedbacks-routing.module';
 
 import { FeedbacksPage } from './feedbacks.page';
+import { FeedbackComponent } from 'src/app/components/professor/feedback/feedback.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { FeedbacksPage } from './feedbacks.page';
     IonicModule,
     FeedbacksPageRoutingModule
   ],
-  declarations: [FeedbacksPage]
+  declarations: [FeedbacksPage, FeedbackComponent]
 })
 export class FeedbacksPageModule {}
