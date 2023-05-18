@@ -1,11 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <a href="tabs/tab2">
-      <ion-icon slot="start" name="close"></ion-icon>
-    </a>
-    <ion-title>Header</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true" class="ion-padding">
-
-  </ion-content>
+<ion-content>
+  <ion-card *ngFor="let exercicio of exercises" (click)="getIdCard(exercicio.nome)">
+    <ion-card-header>
+      <ion-card-title>{{ exercicio.nome }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Repetições</ion-label>
+        <ion-text>{{ exercicio.repeticoes }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Observação</ion-label>
+        <ion-text>{{ exercicio.observacao }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Variação</ion-label>
+        <ion-text>{{ exercicio.variacao }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+    <ion-row justify-content-center>
+      <ion-col size="auto">
+        <ion-button fill="outline" expand="full" (click)="abrirAlert(exercicio)">
+          <ion-label>Deixar feedback</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

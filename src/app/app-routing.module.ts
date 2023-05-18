@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'history-pupils/:info',
     loadChildren: () => import('./pages/professor/history-pupils/history-pupils.module').then( m => m.HistoryPupilsPageModule)
   },
+  {
+    path: 'feedbacks-pupils',
+    loadChildren: () => import('./pages/feedbacks-pupils/feedbacks-pupils.module').then( m => m.FeedbacksPupilsPageModule)
+  },
 
 
 ];

@@ -1,17 +1,16 @@
-/* iOS places the subtitle above the title */
-ion-card-header.ios {
-  display: flex;
-  flex-flow: column-reverse;
+.button-row {
+  margin-top: 16px;
 }
-.card_image{
-  display: flex;
-  width: 800px;
-  height: 35rem;
-display: inline;
-flex-direction: row;
+ion-card {
+  margin-bottom: 16px;
 }
-.buttons{
-  position: relative;
-  top: -40px;
-  left: 14%;
+
+ion-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-card-title {
+  font-weight: bold;
 }

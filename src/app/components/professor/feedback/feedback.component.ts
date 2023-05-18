@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-feedback',
@@ -8,7 +11,12 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./feedback.component.scss'],
 })
 export class FeedbackComponent  implements OnInit {
-  feedbacks: any[] = [];
+  feedbacks = [];
+  db = getFirestore();
+  uid: string;
+  auth = getAuth();
+  idDoc: any;
+  dataDoc: any;
   constructor(private alertController: AlertController) { }
 
   ngOnInit() {
@@ -16,30 +24,19 @@ export class FeedbackComponent  implements OnInit {
      this.carregarFeedbacks();
   }
 
-  carregarFeedbacks() {
-    // Simulação de carregamento de feedbacks
-    this.feedbacks = [
-      {
-        nomeAluno: 'João',
-        // eslint-disable-next-line max-len
-        fotoAluno: 'https://firebasestorage.googleapis.com/v0/b/vitor-f-app.appspot.com/o/images%2Fs9JdEeNoP4OyjDgasZMdjnffwq03%2F17-maio-2023-jupiter.jpg?alt=media&token=1795e301-3cff-46bb-a9a0-cb80eb7b9cbf',
-        dataCriacao: new Date(),
-        conteudo:'asffffffffffflasffffffffffccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccds fffffffffffffffffffffffscasac[cacfasfl',
-        collapsed: true,
-        respondido: true,
-        resposta: 'Obrigado pelo seu feedback!'
-      },
-      {
-        nomeAluno: 'Maria',
-        // eslint-disable-next-line max-len
-        fotoAluno: 'https://firebasestorage.googleapis.com/v0/b/vitor-f-app.appspot.com/o/images%2Fs9JdEeNoP4OyjDgasZMdjnffwq03%2F17-maio-2023-jupiter.jpg?alt=media&token=1795e301-3cff-46bb-a9a0-cb80eb7b9cbf',
-        dataCriacao: new Date(),
-        conteudo: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-        collapsed: true,
-        respondido: true,
-        resposta: 'Obrigado pelo seu feedback!'
-      }
-    ];
+  async carregarFeedbacks() {
+    onAuthStateChanged(this.auth, async (user) => {
+      this.feedbacks = [];
+      this.uid = user.uid;
+      const querySnapshot = await getDocs(collection(this.db, 'users', this.uid, 'feedbacks'));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, ' => ', doc.data());
+        this.feedbacks.push(doc.data());
+        this.idDoc = doc.data().idDoc;
+        this.dataDoc = doc.data();
+      });
+    });
   }
   async responderFeedback(feedback: any) {
     const alert = await this.alertController.create({
@@ -68,10 +65,14 @@ export class FeedbackComponent  implements OnInit {
     await alert.present();
   }
 
-  enviarResposta(feedback: any, resposta: string) {
+  async enviarResposta(feedback: any, resposta: string) {
     // Lógica para enviar a resposta ao serviço ou API
-    console.log('Feedback:', feedback);
+   const docRef = doc(this.db, 'users', this.uid, 'feedbacks', this.idDoc);
     console.log('Resposta:', resposta);
+    await updateDoc(docRef, {
+      answer: resposta,
+      answered: true,
+    });
 
     // Atualizar a visualização do feedback com a resposta
     feedback.resposta = resposta;

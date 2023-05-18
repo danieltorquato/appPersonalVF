@@ -4,14 +4,14 @@
       <ion-col size="12" size-md="6" size-lg="4" *ngFor="let feedback of feedbacks">
         <div class="card-container">
           <div class="aluno-foto-container">
-            <ion-img [src]="feedback.fotoAluno" class="aluno-foto"></ion-img>
+            <ion-img [src]="feedback.img" class="aluno-foto"></ion-img>
           </div>
           <ion-card class="feedback-card">
             <ion-card-header>
-              <ion-card-subtitle class="data-feedback">{{ feedback.dataCriacao | date }}</ion-card-subtitle>
-              <ion-card-title class="aluno-nome">{{ feedback.nomeAluno }}</ion-card-title>
+              <ion-card-subtitle class="data-feedback">{{ feedback.createDate | date }}</ion-card-subtitle>
+              <ion-card-title class="aluno-nome">{{ feedback.name }}</ion-card-title>
             </ion-card-header>
-            <ion-card-content [innerHTML]="feedback.conteudo" [class.collapsed]="feedback.collapsed"></ion-card-content>
+            <ion-card-content [innerHTML]="feedback.text" [class.collapsed]="feedback.collapsed"></ion-card-content>
             <ion-button expand="full" class="expandir-button" (click)="toggleCollapse(feedback)">
               {{ feedback.collapsed ? 'Expandir' : 'Recolher' }}
               <ion-icon name="arrow-down-outline" *ngIf="feedback.collapsed"></ion-icon>
