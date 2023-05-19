@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       .then(async (response) => {
         this.user = response.user.uid;
         console.log(this.user);
-        this.navCtrl.navigateRoot('/tabs/tab2');
+        this.navCtrl.navigateRoot('/initial');
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, getFirestore, onSnapshot, query, setDoc, updateDoc, where } from 'firebase/firestore';
 
 @Component({
   selector: 'app-feedback',
@@ -17,6 +17,7 @@ export class FeedbackComponent  implements OnInit {
   auth = getAuth();
   idDoc: any;
   dataDoc: any;
+  size = [];
   constructor(private alertController: AlertController) { }
 
   ngOnInit() {
@@ -26,15 +27,22 @@ export class FeedbackComponent  implements OnInit {
 
   async carregarFeedbacks() {
     onAuthStateChanged(this.auth, async (user) => {
-      this.feedbacks = [];
+
       this.uid = user.uid;
-      const querySnapshot = await getDocs(collection(this.db, 'users', this.uid, 'feedbacks'));
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, ' => ', doc.data());
-        this.feedbacks.push(doc.data());
-        this.idDoc = doc.data().idDoc;
-        this.dataDoc = doc.data();
+      const q = await query(collection(this.db, 'users', this.uid, 'feedbacks'), where('answered', '==', 'Aguardando Resposta'));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        this.feedbacks = [];
+        this.size = [];
+        querySnapshot.forEach((doc)=>{
+          this.size.push(querySnapshot.size);
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, ' => ', doc.data());
+          this.feedbacks.push(doc.data());
+
+          this.dataDoc = doc.data();
+          console.log(this.dataDoc);
+
+        });
       });
     });
   }
@@ -67,16 +75,22 @@ export class FeedbackComponent  implements OnInit {
 
   async enviarResposta(feedback: any, resposta: string) {
     // Lógica para enviar a resposta ao serviço ou API
-   const docRef = doc(this.db, 'users', this.uid, 'feedbacks', this.idDoc);
+   const docRef = doc(this.db, 'users', this.uid, 'feedbacks', this.dataDoc.idDoc);
     console.log('Resposta:', resposta);
     await updateDoc(docRef, {
       answer: resposta,
-      answered: true,
+      answered: 'Respondido',
+    });
+   const docRefs = doc(this.db, 'users', this.dataDoc.pupil, 'feedbackPupil', this.dataDoc.idDocPupil);
+    console.log('Resposta:', resposta);
+    await updateDoc(docRefs, {
+      answer: resposta,
+      answered: 'Respondido',
     });
 
     // Atualizar a visualização do feedback com a resposta
     feedback.resposta = resposta;
-    feedback.respondido = true;
+    feedback.respondido = 'Respondido';
 
   }
 

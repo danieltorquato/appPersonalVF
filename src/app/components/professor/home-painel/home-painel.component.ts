@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { doc, getFirestore, onSnapshot } from 'firebase/firestore';
+import { collection, doc, getFirestore, onSnapshot, query, where } from 'firebase/firestore';
 import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-home-painel',
@@ -19,12 +20,26 @@ export class HomePainelComponent implements OnInit {
   auth = getAuth();
   items: any;
   listArray;
+  feedbacks = [];
+  size = [];
+  dataDoc: any;
   constructor(
     private storage: Storage, private navCtrl: NavController) { }
 
   ngOnInit() {
-    onAuthStateChanged(this.auth, (user) => {
+    onAuthStateChanged(this.auth, async (user) => {
       this.uid = user.uid;
+      const q = await query(collection(this.db, 'users', this.uid, 'feedbacks'), where('answered', '==', 'Aguardando Resposta'));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        this.feedbacks = [];
+        this.size = [];
+        querySnapshot.forEach((doc)=>{
+          this.size.push(querySnapshot.size);
+          // doc.data() is never undefined for query doc snapshots
+        console.log(this.size);
+
+        });
+      });
       // const docRef = doc(this.db, 'users/' + this.uid);
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const docRef = onSnapshot(doc(this.db, 'users/', this.uid), (doc) => {

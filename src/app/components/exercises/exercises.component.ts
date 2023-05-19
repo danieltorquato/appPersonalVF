@@ -2,7 +2,7 @@
 import { AlertController } from '@ionic/angular';
 // core version + navigation, pagination modules:
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { addDoc, collection, doc, getDoc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 @Component({
   selector: 'app-exercises',
@@ -19,6 +19,8 @@ export class ExercisesComponent implements OnInit {
   message: any;
   dataExercise;
   nomeExercicio: any;
+  docRefs: any;
+  idDocs: any;
   constructor(private alertController: AlertController) {}
 
   ngOnInit() {
@@ -61,15 +63,37 @@ export class ExercisesComponent implements OnInit {
   }
   async sendFeedback(){
     this.docRef = await addDoc(collection(this.db, 'users', this.dataUser.professor, 'feedbacks'), {
+      pupil: this.uid,
+      idDocPupil: '',
       answer: '',
-      answered: false,
-      collaapsed: false,
+      answered: 'Aguardando Resposta',
+      collapsed: false,
       createDate: '',
       img: this.dataUser.img,
       name: this.dataUser.name,
       shortName: this.dataUser.shortName,
       text: this.message,
-      exercise:   this.nomeExercicio
+      exercise:   this.nomeExercicio,
+      idDoc: ''
+    });
+    await updateDoc(this.docRef, {
+      idDoc: this.docRef.id,
+    });
+    this.docRefs = await addDoc(collection(this.db, 'users', this.uid, 'feedbackPupil'), {
+      answer: '',
+      answered: 'Aguardando Resposta',
+      collapsed: false,
+      createDate: '',
+      text: this.message,
+      exercise:   this.nomeExercicio,
+      idDoc: ''
+    });
+    console.log('Document written with ID: ', this.docRefs.id);
+    await updateDoc(this.docRefs, {
+      idDoc: this.docRefs.id
+    });
+    await updateDoc(this.docRef, {
+      idDocPupil: this.docRefs.id,
     });
   }
   async abrirAlert(exercicio) {

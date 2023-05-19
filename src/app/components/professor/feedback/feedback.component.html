@@ -10,8 +10,10 @@
             <ion-card-header>
               <ion-card-subtitle class="data-feedback">{{ feedback.createDate | date }}</ion-card-subtitle>
               <ion-card-title class="aluno-nome">{{ feedback.name }}</ion-card-title>
+              <ion-card-title class="exercicio-nome">{{ feedback.exercise }}</ion-card-title>
             </ion-card-header>
-            <ion-card-content [innerHTML]="feedback.text" [class.collapsed]="feedback.collapsed"></ion-card-content>
+            <ion-card-content [innerHTML]="feedback.text" [class.collapsed]="feedback.collapsed">
+            </ion-card-content>
             <ion-button expand="full" class="expandir-button" (click)="toggleCollapse(feedback)">
               {{ feedback.collapsed ? 'Expandir' : 'Recolher' }}
               <ion-icon name="arrow-down-outline" *ngIf="feedback.collapsed"></ion-icon>
