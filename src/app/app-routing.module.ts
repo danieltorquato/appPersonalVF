@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'feedbacks-pupils',
     loadChildren: () => import('./pages/feedbacks-pupils/feedbacks-pupils.module').then( m => m.FeedbacksPupilsPageModule)
   },
+  {
+    path: 'swim-training/:info',
+    loadChildren: () => import('./pages/professor/swim-training/swim-training.module').then( m => m.SwimTrainingPageModule)
+  },
 
 
 ];

@@ -3,7 +3,8 @@
     "id": 1,
     "nome": "Agachamento",
     "descricao": "Exercício que trabalha os músculos das pernas e glúteos.",
-    "categoria": "Pernas"
+    "categoria": "Pernas",
+    "video": ""
   },
   {
     "id": 2,
@@ -16,6 +17,7 @@
     "nome": "Levantamento terra",
     "descricao": "Exercício que trabalha os músculos das costas e pernas.",
     "categoria": "Costas"
+
   },
   {
     "id": 4,

@@ -79,6 +79,9 @@
   <ion-button expand="full" (click)="setOpen(true)">
     Teste
   </ion-button>
+  <ion-button expand="full"*ngFor="let item of pupilsItem" (click)="pegaId(item.id)" routerLink="/swim-training/{{item.id}}">
+    treino Piscina
+  </ion-button>
   <!-- <ion-button expand="full" (click)="buscarDados()">
 Teste
 </ion-button> -->

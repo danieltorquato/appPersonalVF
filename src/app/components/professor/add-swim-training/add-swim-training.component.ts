@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable object-shorthand */
 import { PupilsComponent } from 'src/app/components/professor/pupils/pupils.component';
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { OverlayEventDetail } from '@ionic/core/components';
 /* eslint-disable @typescript-eslint/member-ordering */
-import { InfiniteScrollCustomEvent, IonModal, NavController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonModal, ModalController, NavController } from '@ionic/angular';
 /* eslint-disable @typescript-eslint/no-shadow */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Exercicio } from '../../../models/exercicios.model';
@@ -15,22 +16,22 @@ import * as $ from 'jquery';
 import { ActivatedRoute } from '@angular/router';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 @Component({
-  selector: 'app-add-exercise',
-  templateUrl: './add-exercise.component.html',
-  styleUrls: ['./add-exercise.component.scss'],
+  selector: 'app-add-swim-training',
+  templateUrl: './add-swim-training.component.html',
+  styleUrls: ['./add-swim-training.component.scss'],
 })
-export class AddExerciseComponent implements OnInit {
-
-
+export class AddSwimTrainingComponent  implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
+  exercicios: any[] = [];
+  name: any;
+  message: string;
+  isModalOpen = false;
   exercicio: Exercicio = { nome: '', descricao: '', categoria: '' };
   str = undefined;
   items = [];
   filterItems: any[];
-  name: any;
   searchTerm = '';
   searchCategory = '';
-  isModalOpen = false;
  id:  string;
  pupilsItem = [];
  trainingItems = [];
@@ -41,11 +42,10 @@ exerciseCategory;
 exerciseVariation;
 exerciseWeight;
 exerciseObservation;
+  constructor(private modalController: ModalController, private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute, private navCtrl: NavController) { }
 
-
-  constructor(private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute, private navCtrl: NavController ) {}
- async ngOnInit() {
-  const auth = getAuth();
+  ngOnInit() {
+    const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
@@ -58,7 +58,6 @@ exerciseObservation;
       alert('Você precisa estar logado');
     }
   });
-
   }
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
@@ -79,18 +78,19 @@ exerciseObservation;
     }
   }
   async currentTraining(){
-    this.trainingItems = [];
-    const querySnapshot = await getDocs(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'));
+    const querySnapshot = await getDocs(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`,'treinoPiscina'));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       this.trainingItems.push(doc.data());
       console.log(this.trainingItems);
     });
+    console.log('pegando');
+    console.log(this.trainingItems);
   }
 
   async buscarDados(){
-    const querySnapshot = await getDocs(collection(db, 'exercicios'));
+    const querySnapshot = await getDocs(collection(db, 'exerciciosPiscina'));
     this.items = [];
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
@@ -158,7 +158,7 @@ emptyList(){
       this.emptyList();
 this.filterItems = [];
     }
-    const queryCategory = query(collection(db, "exercicios"), where("categoria", "==" , this.searchCategory));
+    const queryCategory = query(collection(db, "exerciciosPiscina"), where("categoria", "==" , this.searchCategory));
     const querySnapshot = await getDocs(queryCategory);
   this.emptyList();
     querySnapshot.forEach((doc) => {
@@ -177,21 +177,17 @@ this.filterItems = [];
 variacao = '';
     }
     console.log(nome, variacao);
-    const docRef = await addDoc(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'), {
+    const docRef = await addDoc(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treinoPiscina'), {
       nome: nome,
       variacao: variacao,
-      peso: null,
-      observacao: '',
-      repeticoes: 12,
-      parcela: ''
+      intensidade: 'A1',
+      metros: 50,
     });
-    const docRefPupil = await addDoc(collection(db, 'users', `${this.id}`,'treino'), {
+    const docRefPupil = await addDoc(collection(db, 'users', `${this.id}`,'treinoPiscina'), {
       nome: nome,
       variacao: variacao,
-      peso: null,
-      observacao: '',
-      repeticoes: 12,
-      parcela: ''
+      intensidade: 'A1',
+      metros: 50,
     });
     }
     pegaId(id){
