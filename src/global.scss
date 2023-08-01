@@ -27,9 +27,9 @@
 
 :root{
   --ion-font-family: 'Charis SIL', serif;
-  --ion-background-color: rgb(44, 44, 44);
-  // --ion-toolbar-background: #000075be;
-  --ion-toolbar-color:rgb(0, 0, 0);
+  --ion-background-color: #000953;
+  --ion-toolbar-background: #000075be;
+  --ion-toolbar-color:rgb(255, 255, 255);
   --ion-tab-bar-background:transparent;
   --ion-tab-bar-color:#FFF;
   --ion-tab-bar-border-color:rgb(0, 0, 0);
@@ -40,7 +40,7 @@
 }
 
 ion-header{
-  background-color: rgba(21, 21, 121, 0.644);
+  background-color: #000b5a;
   color: #FFF;
 }
 

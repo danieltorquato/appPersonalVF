@@ -20,12 +20,14 @@
   </button> -->
 </div>
 <div class="secondPainel">
-<a>
-    <button class="icons">
-      <img src="https://img.icons8.com/017bcc/personal-trainer"/>
-      <p style="font-size: 13px;">Personal</p>
-    </button>
-</a>
+<ion-card *ngFor="let item of listArray" (click)="getId(item.professor)">
+
+  <button class="icons" >
+    <img src="https://img.icons8.com/017bcc/personal-trainer"/>
+    <p style="font-size: 13px;">Personal</p>
+  </button>
+</ion-card>
+
 <a href="/history">
     <button class="icons">
       <img src="https://img.icons8.com/017bcc/clock"/>

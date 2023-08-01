@@ -1,0 +1,25 @@
+  ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    button {
+      margin: 10px;
+      background-color: #1E90FF;
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      font-size: larger;
+
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }

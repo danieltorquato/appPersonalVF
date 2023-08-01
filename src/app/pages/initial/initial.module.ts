@@ -1,3 +1,4 @@
+import { InitialcComponent } from './../../components/initialc/initialc.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { InitialPage } from './initial.page';
     IonicModule,
     InitialPageRoutingModule
   ],
-  declarations: [InitialPage]
+  declarations: [InitialPage, InitialcComponent]
 })
 export class InitialPageModule {}

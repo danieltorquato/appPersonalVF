@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Dados do Personal Trainer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="personal-details">
+    <ion-icon name="person" class="personal-icon"></ion-icon>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ personal.nome }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Email:</ion-label>
+            <ion-text>{{ personal.email }}</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telefone:</ion-label>
+            <ion-text>{{ personal.telefone }}</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-label>Endereço:</ion-label>
+            <ion-text>{{ personal.endereco }}</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="contact-button">
+    <ion-button expand="full">Entrar em contato</ion-button>
+  </div>
+</ion-content>

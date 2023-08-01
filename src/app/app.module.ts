@@ -4,7 +4,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -19,11 +19,16 @@ import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/compat
 import { Camera} from '@awesome-cordova-plugins/camera/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { NgChartsModule } from 'ng2-charts';
+import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
+import { SafePipe } from './safe.pipe';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicStorageModule.forRoot(),
     // eslint-disable-next-line max-len
-    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule, NgChartsModule],
+    IonicModule.forRoot(),  AngularFireModule.initializeApp(firebaseConfig), AppRoutingModule,  AngularFireStorageModule, SharedModule, FormsModule, IonicModule, NgChartsModule, RouterModule.forRoot([
+      {path: 'personal/:info', component: PersonalInfoComponent}
+  ])],
   // eslint-disable-next-line max-len
   providers: [AngularFireDatabase, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Camera, File, FormBuilder, AngularFireStorage, UserdadosService],
   bootstrap: [AppComponent],

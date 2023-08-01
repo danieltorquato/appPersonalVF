@@ -3,7 +3,7 @@
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-
+import { getPerformance } from 'firebase/performance';
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
@@ -20,6 +20,8 @@ export const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+const perf = getPerformance(app);
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -90,6 +90,10 @@ const routes: Routes = [
     path: 'swim-training/:info',
     loadChildren: () => import('./pages/professor/swim-training/swim-training.module').then( m => m.SwimTrainingPageModule)
   },
+  {
+    path: 'personal/:info',
+    loadChildren: () => import('./pages/personal/personal.module').then( m => m.PersonalPageModule)
+  },
 
 
 ];

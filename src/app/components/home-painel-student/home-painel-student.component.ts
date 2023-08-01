@@ -19,7 +19,8 @@ export class HomePainelStudentComponent implements OnInit {
   auth = getAuth();
   items: any;
   listArray;
-  constructor(private storage: Storage, private navCtrl: NavController) {}
+  navCtrl = NavController;
+  constructor(private storage: Storage ) {}
   async ngOnInit() {
     onAuthStateChanged(this.auth, (user) => {
       this.uid = user.uid;
@@ -30,6 +31,7 @@ export class HomePainelStudentComponent implements OnInit {
         // console.log('Current data: ', doc.data());
         this.items = doc.data();
         this.listArray = [doc.data()];
+        console.log(this.listArray);
       });
     });
   }
@@ -41,7 +43,7 @@ export class HomePainelStudentComponent implements OnInit {
       .signOut()
       .then((response) => {
         console.log(response);
-        this.navCtrl.navigateRoot('login');
+        // this.navCtrl.navigateRoot('login');
         window.localStorage.clear();
       })
       .catch((error) => {
@@ -52,4 +54,7 @@ export class HomePainelStudentComponent implements OnInit {
       });
   }
   confirmPassword() {}
+  getId(id){
+    console.log(id);
+  }
 }

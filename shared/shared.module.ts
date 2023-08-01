@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponent } from './shared.component';
 import { PupilsComponent } from 'src/app/components/professor/pupils/pupils.component';
+import { SafePipe } from 'src/app/safe.pipe';
 
 @NgModule({
   imports: [

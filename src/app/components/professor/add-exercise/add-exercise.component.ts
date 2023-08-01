@@ -14,6 +14,9 @@ import { db } from 'src/environments/environment';
 import * as $ from 'jquery';
 import { ActivatedRoute } from '@angular/router';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { SafePipe } from 'src/app/safe.pipe';
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',
@@ -41,10 +44,18 @@ exerciseCategory;
 exerciseVariation;
 exerciseWeight;
 exerciseObservation;
+  docRef: any;
+  idExercise: any;
+  trainingItemsId: any;
+  videoExercise: string = "";
+
 
 
   constructor(private exerciciosService: ExerciciosService, private activatedRoute: ActivatedRoute, private navCtrl: NavController ) {}
  async ngOnInit() {
+  if (this.videoExercise === undefined ) {
+this.videoExercise = "";
+  }
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -80,11 +91,12 @@ exerciseObservation;
   }
   async currentTraining(){
     this.trainingItems = [];
-    const querySnapshot = await getDocs(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'));
+    const querySnapshot = await getDocs(collection(db, 'users', `${this.id}`, 'treino'));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       this.trainingItems.push(doc.data());
+      this.trainingItemsId = doc.data().id;
       console.log(this.trainingItems);
     });
   }
@@ -92,6 +104,7 @@ exerciseObservation;
   async buscarDados(){
     const querySnapshot = await getDocs(collection(db, 'exercicios'));
     this.items = [];
+    this.videoExercise = "";
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       this.filterItems = [];
@@ -99,7 +112,12 @@ exerciseObservation;
       this.filterItems = this.items;
       this.exerciseName = doc.data().nome;
       this.exerciseVariation = doc.data().variacao;
-      console.log(doc.data().nome);
+      this.idExercise = doc.data().id;
+      this.videoExercise = doc.data().video;
+      // this.filterItems = this.items.filter(x => x !== undefined);
+      // this.items = this.filterItems.filter(x => x !== undefined);
+      // console.log(this.filterItems);
+      // console.log(this.items);
     });
     console.log(this.items);
 
@@ -143,6 +161,7 @@ emptyList(){
     }
   }
   filterExercises() {
+    this.videoExercise = "";
     this.searchCategory = '';
     if(this.searchTerm.length === 0){
       this.emptyList();
@@ -154,6 +173,7 @@ emptyList(){
     );
     }
   async filterExercisesCategory() {
+    this.videoExercise = "";
     if(this.searchCategory.length === 0){
       this.emptyList();
 this.filterItems = [];
@@ -165,6 +185,8 @@ this.filterItems = [];
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, ' => ', doc.data());
       this.items.push(doc.data());
+      this.idExercise = doc.data().id;
+      this.videoExercise = doc.data().video;
       this.filterItems = this.items.filter(item =>
         item.categoria.toLowerCase().includes(this.searchCategory.toLowerCase())
       );
@@ -172,28 +194,31 @@ this.filterItems = [];
     });
 
     }
-   async addExerciseInTraining(nome, variacao){
-    if (variacao === undefined) {
-variacao = '';
-    }
-    console.log(nome, variacao);
-    const docRef = await addDoc(collection(db, 'users', `${this.uid}`,'pupils', `${this.id}`, 'treino'), {
+   async addExerciseInTraining(nome, variacao, id){
+    this.idExercise = id;
+    this.docRef = await setDoc(doc(db, `users/${this.uid}/pupils/${this.id}/treino`, this.idExercise, ),{
+
       nome: nome,
       variacao: variacao,
       peso: null,
       observacao: '',
       repeticoes: 12,
-      parcela: ''
+      parcela: '',
+      id: this.idExercise,
+      video:  this.videoExercise
     });
-    const docRefPupil = await addDoc(collection(db, 'users', `${this.id}`,'treino'), {
+    const docRefPupil = await setDoc(doc(db, `users/${this.id}/treino`, this.idExercise), {
       nome: nome,
       variacao: variacao,
       peso: null,
       observacao: '',
       repeticoes: 12,
-      parcela: ''
+      parcela: '',
+      id: this.idExercise,
+      video: this.videoExercise
     });
-    }
+
+  }
     pegaId(id){
       console.log(id);
     }
